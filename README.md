@@ -11,6 +11,15 @@ Contributors:
 
 Kami membuat aplikasi bernama Sentra Vaksin untuk pendataan vaksinasi masyarakat Indonesia. Aplikasi ini dapat digunakan oleh admin dan masyarakat umum (visitor). Pada Sentra Vaksin, informasi umum mengenai jadwal, lokasi, dan efek samping vaksinasi dapat diakses oleh admin dan visitor. Selain itu, ada beberapa informasi yang hanya dapat diakses oleh admin, yaitu daftar peserta yang ingin vaksin, daftar peserta yang sudah vaksin, serta daftar tenaga kesehatan.
 
+## Integrasi dengan Web Service
+
+Langkah-langkah yang akan dilakukan untuk mengintegrasikan aplikasi kami dengan web service:
+
+1. Menerapkan cookie-based authentication dengan mengimplementasikan wrapper class dengan library http dan map.
+2. Memanaatkan JsonResponse untuk mengimplementasikan REST API pada Django.
+3. Menyusun desain widget front-end mobile berdasarkan tampilan website.
+4. Mengintegrasikan aplikasi antara front-end dengan back-end dengan konsep asynchronus.
+
 ## Modul yang Akan Diimplementasikan
 
 1. **Informasi jadwal dan lokasi vaksinasi** (form (admin), list (visitor)) -- Bornyto Hamonangan (2006486084)
