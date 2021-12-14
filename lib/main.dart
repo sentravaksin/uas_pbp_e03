@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:daftar_nakes/daftar_nakes.dart';
+// import 'package:daftar_nakes/User_Model/User_Model.dart';
 
 void main() {
   runApp(MyApp());
@@ -72,6 +74,15 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Daftar_Nakes();
+                }));
+              },
+              child: Text('go to daftar nakes'))
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
