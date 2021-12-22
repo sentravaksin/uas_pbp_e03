@@ -1,7 +1,7 @@
 class EfekSamping {
   String nama;
-  String nik;
-  String noHp;
+  int nik;
+  int no_hp;
   String alamat;
   String vaksin;
   String gejala;
@@ -10,10 +10,14 @@ class EfekSamping {
   EfekSamping(
     this.nama,
     this.nik,
-    this.noHp,
+    this.no_hp,
     this.alamat,
     this.vaksin,
     this.gejala,
     this.token,
   );
+
+  void sayHi() {
+    print("Hi");
+  }
 }
