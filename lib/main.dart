@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // File-file modul efek-samping
 import 'package:efek_samping/EfekSamping.dart';
-import 'package:efek_samping/lapor.dart';
-import 'package:efek_samping/laporan.dart';
+import 'package:efek_samping/lapor.dart'; // Import ini buat ke halaman lapor efek samping
+import 'package:efek_samping/laporan.dart'; // Import ini buat ke halaman daftar laporan efek samping
 
 void main() {
   runApp(const MyApp());
