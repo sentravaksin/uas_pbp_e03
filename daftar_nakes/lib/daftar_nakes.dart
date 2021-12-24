@@ -60,7 +60,7 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
                         setState(() {});
                       });
                     },
-                    child: Text('get user')),
+                    child: Text('get Nakes')),
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: ElevatedButton(
