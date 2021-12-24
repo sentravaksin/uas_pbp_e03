@@ -1,7 +1,5 @@
 library daftar_nakes;
 
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'User_Model/User_Model.dart';
 
@@ -21,18 +19,19 @@ int count = 0;
 String dogImage =
     'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fdog%2F&psig=AOvVaw0WhYFdnEb1n98HMz1vfFd-&ust=1639475250715000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJju6rG_4PQCFQAAAAAdAAAAABAS';
 
+List<User>? user;
+
 class _Daftar_NakesState extends State<Daftar_Nakes> {
   String name = '';
-  User? user;
 
   // void getres() {}
 
   @override
   Widget build(BuildContext context) {
-    //User tmep =
-    User.connectToAPI().then((value) {
-      user = value;
-    });
+    // User.connectToAPI().then((value) {
+    //   user = (user == null) ? value : user;
+    //   print(user.toString());
+    // });
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
@@ -57,10 +56,21 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
                     onPressed: () {
                       User.connectToAPI().then((value) {
                         user = value;
+                        // print(user.toString());
                         setState(() {});
                       });
                     },
-                    child: Text('get user'))
+                    child: Text('get user')),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: ElevatedButton(
+                      onPressed: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) => _makePopup());
+                      },
+                      child: Text("popup uhuy")),
+                )
               ],
             ),
           ),
@@ -74,24 +84,65 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
     );
   }
 
-  Column displayUser() {
-    return (user == null)
-        ? Column()
-        : Column(
+  GestureDetector _makePopup() {
+    return GestureDetector(
+      // onVerticalDragDown: (context) {
+      //   print('dragged down');
+      // },
+      child: AlertDialog(
+        content: Container(
+          alignment: Alignment.center,
+          child: Column(
             children: [
-              Container(
-                  width: 200,
-                  height: 200,
-                  padding: EdgeInsets.zero,
-                  child: Image(
-                    image:
-                        NetworkImage((user == null) ? dogImage : user!.avatar),
-                    fit: BoxFit.cover,
-                  )),
-              Text((user == null)
-                  ? " "
-                  : user!.id + " " + user!.email + " " + user!.name)
+              Text('asdasd'),
+              GestureDetector(
+                child: Text('click me'),
+                onTap: () {
+                  print('asdasd');
+                },
+              )
             ],
-          );
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(5))),
+      ),
+    );
+  }
+
+  GestureDetector createCell(String isi) {
+    return GestureDetector(
+      onTap: () {
+        print(isi);
+      },
+      child: Container(
+        padding: EdgeInsets.all(5),
+        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+        // height: 10.0,
+        // width: 10.0,
+        color: Colors.pink,
+        child: Text(isi),
+      ),
+    );
+  }
+
+  Column displayUser() {
+    Column cols = Column(
+      children: [],
+    );
+    if (user != null) {
+      for (int i = 0; i < user!.length; i++) {
+        User item = user!.elementAt(i);
+        print(item);
+        cols.children
+            .add(Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          createCell(item.name),
+          createCell(item.umur),
+          createCell(item.pendidikan),
+          createCell(item.rs),
+        ]));
+      }
+    }
+    return cols;
   }
 }
