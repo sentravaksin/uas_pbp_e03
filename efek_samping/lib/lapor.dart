@@ -1,3 +1,4 @@
+import 'package:daftar_nakes/daftar_nakes.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'EfekSamping.dart';
@@ -357,12 +358,40 @@ class LaporState extends State<Lapor> {
     );
   }
 
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      case 1:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      case 2:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      default:
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("Sentra Vaksin"),
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (item) => onSelected(context, item),
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(value: 0, child: Text("Daftar Nakes")),
+              PopupMenuItem<int>(value: 1, child: Text("Jadwal")),
+              PopupMenuItem<int>(value: 2, child: Text("Belum Vaksin"))
+            ],
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(
