@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (String value) {
                   _updateStatus("");
                 },
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.datetime,
                 decoration: InputDecoration(
                   labelText: 'Waktu',
                   border: OutlineInputBorder(),
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (String value) {
                   _updateStatus("");
                 },
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.text,
                 decoration: const InputDecoration(
                   labelText: 'Tempat Pelaksanaan',
                   border: OutlineInputBorder(),
@@ -101,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (String value) {
                   _updateStatus("");
                 },
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.text,
                 decoration: const InputDecoration(
                   labelText: 'Jenis Vaksin',
                   border: OutlineInputBorder(),
