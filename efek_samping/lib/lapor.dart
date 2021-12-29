@@ -31,6 +31,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Nama",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -75,6 +76,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "NIK",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -114,6 +116,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "No HP",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -153,6 +156,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Alamat",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -190,6 +194,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Vaksin",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -227,6 +232,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Gejala",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           alignLabelWithHint: true,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -267,6 +273,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Token",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -331,10 +338,11 @@ class LaporState extends State<Lapor> {
   Widget buildSubmitButton(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Colors.blue)))),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.blue))),
+      ),
       onPressed: () async {
         final isValid = _formKey.currentState!.validate();
         if (isValid) {
@@ -348,7 +356,9 @@ class LaporState extends State<Lapor> {
           });
 
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(hasil!)),
+            SnackBar(
+                content: Text(hasil!,
+                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'))),
           );
 
           if (hasil == "Laporan telah diterima") {
@@ -356,7 +366,10 @@ class LaporState extends State<Lapor> {
           }
         }
       },
-      child: Text("Submit"),
+      child: Text(
+        "Submit",
+        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
+      ),
     );
   }
 
@@ -379,13 +392,25 @@ class LaporState extends State<Lapor> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sentra Vaksin"),
+        backgroundColor: Colors.lightBlue,
+        title: Text("Laporan Efek Samping Vaksin",
+            style: TextStyle(fontFamily: 'ABeeZee', fontSize: 24)),
         actions: [
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem<int>(value: 0, child: Text("Jadwal Vaksin")),
-              PopupMenuItem<int>(value: 1, child: Text("Registrasi Vaksin")),
+              PopupMenuItem<int>(
+                  value: 0,
+                  child: Text(
+                    "Jadwal Vaksin",
+                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
+                  )),
+              PopupMenuItem<int>(
+                  value: 1,
+                  child: Text(
+                    "Registrasi Vaksin",
+                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
+                  )),
             ],
           )
         ],
@@ -398,15 +423,6 @@ class LaporState extends State<Lapor> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Title(
-                    color: Colors.blue,
-                    child: Text(
-                      "Laporan Efek Samping Vaksinasi",
-                      //style: Theme.of(context).textTheme.headline2,
-                    )),
-                SizedBox(
-                  height: 30,
-                ),
                 buildNama(context),
                 buildNIK(context),
                 buildNoHP(context),
