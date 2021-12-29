@@ -54,6 +54,14 @@ class _LaporanState extends State<Laporan> {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
         break;
+      case 3:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      case 4:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
       default:
     }
   }
@@ -67,9 +75,10 @@ class _LaporanState extends State<Laporan> {
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem<int>(value: 0, child: Text("Daftar Nakes")),
-              PopupMenuItem<int>(value: 1, child: Text("Jadwal")),
-              PopupMenuItem<int>(value: 2, child: Text("Belum Vaksin"))
+              PopupMenuItem<int>(value: 0, child: Text("Jadwal Vaksin")),
+              PopupMenuItem<int>(value: 1, child: Text("Registrasi Vaksin")),
+              PopupMenuItem<int>(value: 3, child: Text("Lapor Keluhan")),
+              PopupMenuItem<int>(value: 4, child: Text("Daftar Nakes")),
             ],
           )
         ],
@@ -90,27 +99,6 @@ class _LaporanState extends State<Laporan> {
           return Center();
         },
       )),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_rounded),
-            label: 'Daftar Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment_outlined),
-            label: 'Lapor',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.health_and_safety_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-        ],
-      ),
     );
   }
 }

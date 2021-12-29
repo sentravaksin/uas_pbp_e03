@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'EfekSamping.dart';
 import 'dart:convert';
+import 'package:daftar_nakes/daftar_nakes.dart';
+import 'package:jadwal/jadwal.dart';
+import 'package:belum_vaksin/belum_vaksin.dart';
 
 class Lapor extends StatefulWidget {
   @override
@@ -357,12 +360,35 @@ class LaporState extends State<Lapor> {
     );
   }
 
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      case 1:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      default:
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text("Sentra Vaksin"),
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (item) => onSelected(context, item),
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(value: 0, child: Text("Jadwal Vaksin")),
+              PopupMenuItem<int>(value: 1, child: Text("Registrasi Vaksin")),
+            ],
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -393,23 +419,6 @@ class LaporState extends State<Lapor> {
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_rounded),
-            label: 'Daftar Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment_outlined),
-            label: 'Lapor',
-          ),
-        ],
       ),
     );
   }
