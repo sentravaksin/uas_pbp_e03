@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'EfekSamping.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:daftar_nakes/daftar_nakes.dart';
+import 'package:jadwal/jadwal.dart';
+import 'package:belum_vaksin/belum_vaksin.dart';
 
 class Laporan extends StatefulWidget {
   const Laporan({Key? key}) : super(key: key);
@@ -37,11 +40,39 @@ class _LaporanState extends State<Laporan> {
     return reversedReports;
   }
 
+  void onSelected(BuildContext context, int item) {
+    switch (item) {
+      case 0:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      case 1:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      case 2:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      default:
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Laporan Efek Samping"),
+        actions: [
+          PopupMenuButton<int>(
+            onSelected: (item) => onSelected(context, item),
+            itemBuilder: (context) => [
+              PopupMenuItem<int>(value: 0, child: Text("Daftar Nakes")),
+              PopupMenuItem<int>(value: 1, child: Text("Jadwal")),
+              PopupMenuItem<int>(value: 2, child: Text("Belum Vaksin"))
+            ],
+          )
+        ],
       ),
       body: SafeArea(
           child: FutureBuilder<List<EfekSamping>>(
@@ -73,6 +104,10 @@ class _LaporanState extends State<Laporan> {
           const BottomNavigationBarItem(
             icon: Icon(Icons.add_comment_outlined),
             label: 'Lapor',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.health_and_safety_outlined),
+            label: 'Jadwal Vaksin',
           ),
         ],
       ),
