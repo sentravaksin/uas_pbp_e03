@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'EfekSamping.dart';
 import 'dart:convert';
+import 'package:daftar_nakes/daftar_nakes.dart';
+import 'package:jadwal/jadwal.dart';
+import 'package:belum_vaksin/belum_vaksin.dart';
 
 class Lapor extends StatefulWidget {
   @override
@@ -29,6 +32,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Nama",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -73,6 +77,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "NIK",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -112,6 +117,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "No HP",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -151,6 +157,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Alamat",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -188,6 +195,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Vaksin",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -225,6 +233,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Gejala",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           alignLabelWithHint: true,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -265,6 +274,7 @@ class LaporState extends State<Lapor> {
     return TextFormField(
       decoration: InputDecoration(
           labelText: "Token",
+          labelStyle: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
@@ -329,10 +339,11 @@ class LaporState extends State<Lapor> {
   Widget buildSubmitButton(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Colors.blue)))),
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: BorderSide(color: Colors.blue))),
+      ),
       onPressed: () async {
         final isValid = _formKey.currentState!.validate();
         if (isValid) {
@@ -346,7 +357,9 @@ class LaporState extends State<Lapor> {
           });
 
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(hasil!)),
+            SnackBar(
+                content: Text(hasil!,
+                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'))),
           );
 
           if (hasil == "Laporan telah diterima") {
@@ -354,7 +367,10 @@ class LaporState extends State<Lapor> {
           }
         }
       },
-      child: Text("Submit"),
+      child: Text(
+        "Submit",
+        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
+      ),
     );
   }
 
@@ -368,10 +384,6 @@ class LaporState extends State<Lapor> {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
         break;
-      case 2:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
       default:
     }
   }
@@ -381,14 +393,25 @@ class LaporState extends State<Lapor> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sentra Vaksin"),
+        backgroundColor: Colors.lightBlue,
+        title: Text("Laporan Efek Samping Vaksin",
+            style: TextStyle(fontFamily: 'ABeeZee', fontSize: 24)),
         actions: [
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem<int>(value: 0, child: Text("Daftar Nakes")),
-              PopupMenuItem<int>(value: 1, child: Text("Jadwal")),
-              PopupMenuItem<int>(value: 2, child: Text("Belum Vaksin"))
+              PopupMenuItem<int>(
+                  value: 0,
+                  child: Text(
+                    "Jadwal Vaksin",
+                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
+                  )),
+              PopupMenuItem<int>(
+                  value: 1,
+                  child: Text(
+                    "Registrasi Vaksin",
+                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
+                  )),
             ],
           )
         ],
@@ -401,15 +424,6 @@ class LaporState extends State<Lapor> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Title(
-                    color: Colors.blue,
-                    child: Text(
-                      "Laporan Efek Samping Vaksinasi",
-                      //style: Theme.of(context).textTheme.headline2,
-                    )),
-                SizedBox(
-                  height: 30,
-                ),
                 buildNama(context),
                 buildNIK(context),
                 buildNoHP(context),
@@ -422,23 +436,6 @@ class LaporState extends State<Lapor> {
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_rounded),
-            label: 'Daftar Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment_outlined),
-            label: 'Lapor',
-          ),
-        ],
       ),
     );
   }

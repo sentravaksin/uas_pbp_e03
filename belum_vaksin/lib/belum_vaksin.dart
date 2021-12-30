@@ -11,9 +11,9 @@ class PesertaVaksin {
   int no_telp;
 
   // generated attributes (masih ga ngerti nanti gmn)
-  var id;
-  var sesi;
-  var token;
+  // var id;
+  // var sesi;
+  // var token;
 
   // constructor
   PesertaVaksin(
@@ -24,8 +24,8 @@ class PesertaVaksin {
     this.nik,
     this.no_telp,
 
-    this.id,
-    this.sesi,
-    this.token,
+    // this.id,
+    // this.sesi,
+    // this.token,
   );
 }

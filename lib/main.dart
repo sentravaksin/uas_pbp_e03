@@ -1,5 +1,7 @@
 import 'package:belum_vaksin/screens/registrasi_vaksin.dart';
 import 'package:flutter/material.dart';
+import 'package:daftar_nakes/daftar_nakes.dart';
+// import 'package:daftar_nakes/User_Model/User_Model.dart';
 // File-file modul efek-samping
 import 'package:efek_samping/EfekSamping.dart'; // Import ini buat ke halaman registrasi vaksin
 import 'package:efek_samping/lapor.dart'; // Import ini buat ke halaman lapor efek samping

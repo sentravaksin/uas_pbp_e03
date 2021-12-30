@@ -1,4 +1,5 @@
 // page form registrasi vaksin
+import 'package:efek_samping/lapor.dart';
 import 'package:flutter/material.dart';
 import 'package:belum_vaksin/belum_vaksin.dart';
 import 'package:http/http.dart' as http;
@@ -30,11 +31,6 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
 
   // for form result
   String _submit = "";
-  void _updateSubmit(String submitted) {
-    setState(() {
-      _submit = submitted;
-    });
-  }
 
   // color system
   var pinkAccent = Color.fromARGB(255, 255, 144, 181);
@@ -45,15 +41,19 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
     switch (item) {
       case 0:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+            context, MaterialPageRoute(builder: (context) => Lapor()));
         break;
       case 1:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+            context, MaterialPageRoute(builder: (context) => Lapor()));
         break;
       case 2:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+            context, MaterialPageRoute(builder: (context) => Lapor()));
+        break;
+      case 3:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Lapor()));
         break;
       default:
     }
@@ -355,6 +355,92 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
     );
   }
 
+  // submit button widget
+  Widget SubmitRegistrasi(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: pinkAccent,
+        padding: EdgeInsets.symmetric(horizontal: 36, vertical: 16),
+        textStyle: TextStyle(
+          fontSize: 20,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+      child: Text(
+        "Submit",
+        style: TextStyle(
+          fontSize: 20,
+          color: Colors.white,
+        ),
+      ),
+      onPressed: () async {
+        final valid = _formKey.currentState!.validate();
+
+        if (valid) {
+          _formKey.currentState!.save();
+
+          PesertaVaksin pesertaVaksin = PesertaVaksin(
+            waktu!, tempat_pelaksanaan!, jenis_vaksin!, nama_peserta!, nik!, no_telp!,
+            // id, sesi, token belom ngerti harus gimana
+          );
+          final String finalSubmit = await registerPeserta(pesertaVaksin);
+
+          setState(() {
+            _submit = finalSubmit;
+          });
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(_submit,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'ABeeZee',
+                  color: fontColor,
+                )
+              )
+            ),
+          );
+
+          if (_submit == "Laporan telah diterima") {
+            _formKey.currentState!.reset();
+          }
+        }
+      },
+    );
+  }
+
+  // for creating the registration
+  Future<String> registerPeserta(PesertaVaksin pesertaVaksin) async {
+    final String apiUrl = 'http://sentra-vaksin.herokuapp.com/api/belum_vaksin/create';
+
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json",
+      },
+      body: jsonEncode({
+        "waktu": pesertaVaksin.waktu,
+        "tempat_pelaksanaan": pesertaVaksin.tempat_pelaksanaan,
+        "jenis_vaksin": pesertaVaksin.jenis_vaksin,
+        "nama_peserta": pesertaVaksin.nama_peserta,
+        "nik": pesertaVaksin.nik,
+        "no_telp": pesertaVaksin.no_telp,
+        // id, sesi, token belom ngerti harus gimana
+      })
+    );
+
+    if (response.statusCode == 201) {
+      return "Laporan telah diterima";
+    } else if (response.statusCode == 400) {
+      return "Ada masalah dalam memasukkan data, mohon periksa kembali";
+    } else {
+      return "Ada masalah dalam pengiriman data, mohon coba beberapa saat lagi";
+    }
+  }
+
   // widget build
   @override
   Widget build(BuildContext context) {
@@ -368,9 +454,34 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem<int>(value: 0, child: Text("Daftar Nakes")),
-              PopupMenuItem<int>(value: 1, child: Text("Jadwal")),
-              PopupMenuItem<int>(value: 2, child: Text("Belum Vaksin"))
+              PopupMenuItem<int>(
+                value: 0,
+                child: Text(
+                  "Jadwal Vaksin",
+                  style: TextStyle(fontSize: 20),
+                )
+              ),
+              PopupMenuItem<int>(
+                value: 1,
+                child: Text(
+                  "Peserta Vaksin",
+                  style: TextStyle(fontSize: 20),
+                )
+              ),
+              PopupMenuItem<int>(
+                value: 2,
+                child: Text(
+                  "Lapor Efek Samping",
+                  style: TextStyle(fontSize: 20),
+                )
+              ),
+              PopupMenuItem<int>(
+                value: 3,
+                child: Text(
+                  "Daftar Nakes",
+                  style: TextStyle(fontSize: 20),
+                )
+              ),
             ],
           )
         ],
@@ -420,6 +531,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
                   height: 12,
                 ),
                 JenisVaksinField(context),
+                SizedBox(
+                  height: 8,
+                ),
+                SubmitRegistrasi(context),
               ],
             ),
           ),
@@ -429,22 +544,29 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
       // bottom navbar
       // TODO: UPDATE INI
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
+        unselectedItemColor: Color.fromARGB(255, 105, 105, 105),
+        selectedItemColor: pinkAccent,
+        type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
             icon: Icon(Icons.access_time_outlined),
             label: 'Jadwal Vaksin',
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_rounded),
-            label: 'Daftar Vaksin',
+            icon: Icon(Icons.assignment_ind_outlined),
+            label: 'Peserta Vaksin',
           ),
           const BottomNavigationBarItem(
             icon: Icon(Icons.add_comment_outlined),
             label: 'Lapor',
           ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.badge_outlined),
+            label: 'Daftar Nakes',
+          ),
         ],
       ),
     );
   }
+
 }
