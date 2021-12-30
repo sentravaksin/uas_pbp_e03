@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'EfekSamping.dart';
-import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Laporan extends StatefulWidget {
   const Laporan({Key? key}) : super(key: key);
@@ -11,33 +11,31 @@ class Laporan extends StatefulWidget {
 }
 
 class _LaporanState extends State<Laporan> {
-  List<EfekSamping> laporan = List.empty();
-  Future<http.Response> fetchAlbum() {
-    return http.get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+  Future<List<EfekSamping>> getLaporan() async {
+    //const url = 'http://10.0.2.2:8000/api/efek-samping/laporan';
+    const url = 'http://sentra-vaksin.herokuapp.com/api/efek-samping/laporan';
+    var response = await http.get(Uri.parse(url));
+    var jsonData = json.decode(response.body);
+    //var jsonArray = jsonData['data'];
+
+    List<EfekSamping> reports = [];
+
+    for (var jsonLaporan in jsonData) {
+      String nama = jsonLaporan['nama'];
+      int nik = jsonLaporan['nik'];
+      int no_hp = jsonLaporan['no_hp'];
+      String alamat = jsonLaporan['alamat'];
+      String vaksin = jsonLaporan['vaksin'];
+      String gejala = jsonLaporan['gejala'];
+      String token = jsonLaporan['token'];
+
+      EfekSamping efekSamping =
+          EfekSamping(nama, nik, no_hp, alamat, vaksin, gejala, token);
+      reports.add(efekSamping);
+    }
+    List<EfekSamping> reversedReports = reports.reversed.toList();
+    return reversedReports;
   }
-  // void getData() async {
-  //   var response =
-  //       await Dio().get('http://10.0.2.2:8000/api/efek-samping/laporan');
-
-  //   var fetched = response.data;
-  //   // print(fetched);
-  //   // print(fetched[0]['nik'].runtimeType);
-  //   // print(fetched[0]['no_hp'].runtimeType);
-
-  //   for (var i = 0; i < fetched.length; i++) {
-  //     String nama = fetched[i]['nama'];
-  //     String nik = fetched[i]['nik'].toString();
-  //     String no_hp = fetched[i]['no_hp'].toString();
-  //     String alamat = fetched[i]['alamat'];
-  //     String vaksin = fetched[i]['vaksin'];
-  //     String gejala = fetched[i]['gejala'];
-  //     String token = fetched[i]['token'].toString();
-
-  //     laporan.add(EfekSamping(nama, nik, no_hp, alamat, vaksin, gejala, token));
-  //   }
-
-  //   print(laporan);
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +44,23 @@ class _LaporanState extends State<Laporan> {
         title: Text("Laporan Efek Samping"),
       ),
       body: SafeArea(
-          child: ListView.builder(
-              itemCount: laporan.length,
-              itemBuilder: (BuildContext context, int index) {
-                return buildEfekSampingCard(laporan[index]);
-              })),
+          child: FutureBuilder<List<EfekSamping>>(
+        future: getLaporan(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List<EfekSamping> reports = snapshot.data!;
+            return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (BuildContext context, int index) {
+                  EfekSamping laporan = reports[index];
+                  return buildEfekSampingCard(laporan);
+                });
+          }
+          return Center();
+        },
+      )),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        selectedItemColor: Colors.blue,
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
             icon: Icon(Icons.access_time_outlined),
@@ -76,13 +84,13 @@ Widget buildEfekSampingCard(EfekSamping efekSamping) {
   return Card(
     child: Column(
       children: [
-        Text(efekSamping.nama),
-        Text(efekSamping.nik.toString()),
-        Text(efekSamping.noHp.toString()),
-        Text(efekSamping.alamat),
-        Text(efekSamping.vaksin),
-        Text(efekSamping.gejala),
-        Text(efekSamping.token),
+        Text("Nama :${efekSamping.nama}"),
+        Text("NIK ${efekSamping.nik.toString()}"),
+        Text("No HP ${efekSamping.no_hp.toString()}"),
+        Text("Alamat ${efekSamping.alamat}"),
+        Text("Vaksin ${efekSamping.vaksin}"),
+        Text("Gejala ${efekSamping.gejala}"),
+        Text("Token ${efekSamping.token}")
       ],
     ),
   );

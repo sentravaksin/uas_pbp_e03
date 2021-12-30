@@ -3,28 +3,49 @@ import 'package:http/http.dart' as http;
 import 'EfekSamping.dart';
 import 'dart:convert';
 
-class FormScreen extends StatefulWidget {
+class Lapor extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return FormScreenState();
+    return LaporState();
   }
 }
 
-class FormScreenState extends State<FormScreen> {
-  String? nama = "";
-  String? nik = "";
-  String? noHp = "";
-  String? alamat = "";
-  String? vaksin = "";
-  String? gejala = "";
-  String? token = "";
+class LaporState extends State<Lapor> {
+  String? nama;
+  int? nik;
+  int? no_hp;
+  String? alamat;
+  String? vaksin;
+  String? gejala;
+  String? token;
+
+  String? hasil;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Widget buildNama(BuildContext context) {
     // TODO: implement build
     return TextFormField(
-      decoration: InputDecoration(labelText: "Nama"),
+      decoration: InputDecoration(
+          labelText: "Nama",
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: Colors.blue,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 2.0,
+              )),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 2.0,
+              ))),
       maxLength: 20,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -49,8 +70,27 @@ class FormScreenState extends State<FormScreen> {
   Widget buildNIK(BuildContext context) {
     // TODO: implement build
     return TextFormField(
-      decoration: InputDecoration(labelText: "NIK"),
-      maxLength: 20,
+      decoration: InputDecoration(
+          labelText: "NIK",
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: Colors.blue,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 2.0,
+              )),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 2.0,
+              ))),
+      maxLength: 16,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Mohon isi data ini';
@@ -61,7 +101,7 @@ class FormScreenState extends State<FormScreen> {
         return null;
       },
       onSaved: (value) {
-        nik = value;
+        nik = int.parse(value!);
       },
     );
   }
@@ -69,8 +109,27 @@ class FormScreenState extends State<FormScreen> {
   Widget buildNoHP(BuildContext context) {
     // TODO: implement build
     return TextFormField(
-      decoration: InputDecoration(labelText: "No HP"),
-      maxLength: 20,
+      decoration: InputDecoration(
+          labelText: "No HP",
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: Colors.blue,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 2.0,
+              )),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 2.0,
+              ))),
+      maxLength: 12,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Mohon isi data ini';
@@ -81,7 +140,7 @@ class FormScreenState extends State<FormScreen> {
         return null;
       },
       onSaved: (value) {
-        noHp = value;
+        no_hp = int.parse(value!);
       },
     );
   }
@@ -89,8 +148,27 @@ class FormScreenState extends State<FormScreen> {
   Widget buildAlamat(BuildContext context) {
     // TODO: implement build
     return TextFormField(
-      decoration: InputDecoration(labelText: "Alamat"),
-      maxLength: 20,
+      decoration: InputDecoration(
+          labelText: "Alamat",
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: Colors.blue,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 2.0,
+              )),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 2.0,
+              ))),
+      maxLength: 32,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Mohon isi data ini';
@@ -107,8 +185,27 @@ class FormScreenState extends State<FormScreen> {
   Widget buildVaksin(BuildContext context) {
     // TODO: implement build
     return TextFormField(
-      decoration: InputDecoration(labelText: "Vaksin"),
-      maxLength: 20,
+      decoration: InputDecoration(
+          labelText: "Vaksin",
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: Colors.blue,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 2.0,
+              )),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 2.0,
+              ))),
+      maxLength: 7,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Mohon isi data ini';
@@ -125,8 +222,30 @@ class FormScreenState extends State<FormScreen> {
   Widget buildGejala(BuildContext context) {
     // TODO: implement build
     return TextFormField(
-      decoration: InputDecoration(labelText: "Gejala"),
-      maxLength: 20,
+      decoration: InputDecoration(
+          labelText: "Gejala",
+          alignLabelWithHint: true,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: Colors.blue,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 2.0,
+              )),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 2.0,
+              ))),
+      maxLength: 140,
+      maxLines: 5,
+      keyboardType: TextInputType.multiline,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Mohon isi data ini';
@@ -143,8 +262,27 @@ class FormScreenState extends State<FormScreen> {
   Widget buildToken(BuildContext context) {
     // TODO: implement build
     return TextFormField(
-      decoration: InputDecoration(labelText: "Token"),
-      maxLength: 20,
+      decoration: InputDecoration(
+          labelText: "Token",
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: Colors.blue,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.blue,
+                width: 2.0,
+              )),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+              borderSide: BorderSide(
+                color: Colors.red,
+                width: 2.0,
+              ))),
+      maxLength: 5,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Mohon isi data ini';
@@ -158,37 +296,61 @@ class FormScreenState extends State<FormScreen> {
     );
   }
 
-  // Future<http.Response> createLaporan(EfekSamping efekSamping) {
-  //   return http.post(
-  //     Uri.parse('http://10.0.2.2:8000/api/efek-samping/laporan'),
-  //     headers: <String, String>{
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //     },
-  //     body: jsonEncode(<String, String>{
-  //       "nama": efekSamping.nama,
-  //       "nik": efekSamping.nik,
-  //       "no_hp": efekSamping.noHp,
-  //       "alamat": efekSamping.alamat,
-  //       "vaksin": efekSamping.vaksin,
-  //       "gejala": efekSamping.gejala,
-  //       "token": efekSamping.token,
-  //     }),
-  //   );
-  // }
+  Future<String> createLaporan(EfekSamping efekSamping) async {
+    //final String apiUrl = 'http://10.0.2.2:8000/api/efek-samping/lapor';
+    final String apiUrl =
+        'http://sentra-vaksin.herokuapp.com/api/efek-samping/lapor';
+
+    final response = await http.post(Uri.parse(apiUrl),
+        headers: {
+          "content-type": "application/json",
+          "accept": "application/json",
+        },
+        body: jsonEncode({
+          "nama": efekSamping.nama,
+          "nik": efekSamping.nik,
+          "no_hp": efekSamping.no_hp,
+          "alamat": efekSamping.alamat,
+          "vaksin": efekSamping.vaksin,
+          "gejala": efekSamping.gejala,
+          "token": efekSamping.token,
+        }));
+
+    if (response.statusCode == 201) {
+      return "Laporan telah diterima";
+    } else if (response.statusCode == 400) {
+      return "Token salah, laporan gagal dibuat";
+    } else {
+      return "Ada masalah dalam pengiriman data, mohon coba beberapa saat lagi";
+    }
+  }
 
   Widget buildSubmitButton(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
+      style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18.0),
+                  side: BorderSide(color: Colors.blue)))),
+      onPressed: () async {
         final isValid = _formKey.currentState!.validate();
         if (isValid) {
           _formKey.currentState!.save();
+          EfekSamping efekSamping = EfekSamping(
+              nama!, nik!, no_hp!, alamat!, vaksin!, gejala!, token!);
+          final String hasilLaporan = await createLaporan(efekSamping);
 
-          final message = 'Nama : $nama\nNIK: $nik';
-          final snackBar = SnackBar(content: Text(message));
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          var efekSamping = EfekSamping(
-              nama!, nik!, noHp!, alamat!, vaksin!, gejala!, token!);
-          // createLaporan(efekSamping);
+          setState(() {
+            hasil = hasilLaporan;
+          });
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(hasil!)),
+          );
+
+          if (hasil == "Laporan telah diterima") {
+            _formKey.currentState!.reset();
+          }
         }
       },
       child: Text("Submit"),
@@ -214,8 +376,11 @@ class FormScreenState extends State<FormScreen> {
                     color: Colors.blue,
                     child: Text(
                       "Laporan Efek Samping Vaksinasi",
-                      style: Theme.of(context).textTheme.headline2,
+                      //style: Theme.of(context).textTheme.headline2,
                     )),
+                SizedBox(
+                  height: 30,
+                ),
                 buildNama(context),
                 buildNIK(context),
                 buildNoHP(context),
@@ -230,7 +395,7 @@ class FormScreenState extends State<FormScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Theme.of(context).textSelectionTheme.selectionColor,
+        selectedItemColor: Colors.blue,
         items: <BottomNavigationBarItem>[
           const BottomNavigationBarItem(
             icon: Icon(Icons.access_time_outlined),

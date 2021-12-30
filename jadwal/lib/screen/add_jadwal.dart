@@ -1,5 +1,29 @@
 import 'dart:async';
+import 'dart:core';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import '../model/SesiVaksinasi.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+Future<dynamic> addData(SesiVaksinasi sesiVaksinasi) async {
+  final response = await http.post(
+    Uri.parse('https://sentra-vaksin.herokuapp.com/api/jadwal/create/'),
+    headers: {
+      "Access-Control_Allow_Origin": "*",
+      "Content-Type": "application/json; charset=utf-8",
+    },
+    body: jsonEncode(sesiVaksinasi),
+  );
+  print(response.statusCode);
+  if (response.statusCode == 201) {
+    return "Success";
+  }
+  throw Exception('Failed to save');
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -28,6 +52,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _status = "";
+  late String _waktu;
+  late String _tempatPelaksanaan;
+  late String _jenisVaksin;
+  late int _kuota;
+  late String _kontak;
+
+  final _formKey = GlobalKey<FormState>();
 
   void _updateStatus(String status) {
     setState(() {
@@ -66,60 +97,127 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextFormField(
-                controller: _dateController,
-                onChanged: (String value) {
-                  _updateStatus("");
-                },
-                keyboardType: TextInputType.datetime,
-                decoration: InputDecoration(
-                  labelText: 'Waktu',
-                  border: OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.calendar_today_rounded),
-                    onPressed: () => _selectDate(context),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                onChanged: (String value) {
-                  _updateStatus("");
-                },
-                keyboardType: TextInputType.text,
-                decoration: const InputDecoration(
-                  labelText: 'Tempat Pelaksanaan',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                onChanged: (String value) {
-                  _updateStatus("");
-                },
-                keyboardType: TextInputType.text,
-                decoration: const InputDecoration(
-                  labelText: 'Jenis Vaksin',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                onChanged: (String value) {
-                  _updateStatus("");
-                },
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  labelText: 'Kuota',
-                  border: OutlineInputBorder(),
-                ),
-              ),
+              Form(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  key: _formKey,
+                  child: Column(children: [
+                    TextFormField(
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter the field';
+                        }
+                        _waktu = value!;
+                      },
+                      onChanged: (String value) {
+                        _updateStatus("");
+                      },
+                      keyboardType: TextInputType.text,
+                      decoration: const InputDecoration(
+                        labelText: 'Waktu',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    // TextFormField(
+                    //   controller: _dateController,
+                    //   validator: (value) {
+                    //     if (value?.isEmpty ?? true) {
+                    //       return 'Please enter the field';
+                    //     }
+                    //     _waktu = value!;
+                    //   },
+                    //   onChanged: (String value) {
+                    //     _updateStatus("");
+                    //   },
+                    //   keyboardType: TextInputType.datetime,
+                    //   decoration: InputDecoration(
+                    //     labelText: 'Waktu',
+                    //     border: OutlineInputBorder(),
+                    //     suffixIcon: IconButton(
+                    //       icon: Icon(Icons.calendar_today_rounded),
+                    //       onPressed: () => _selectDate(context),
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   height: 15,
+                    // ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter the field';
+                        }
+                        _tempatPelaksanaan = value!;
+                      },
+                      onChanged: (String value) {
+                        _updateStatus("");
+                      },
+                      keyboardType: TextInputType.text,
+                      decoration: const InputDecoration(
+                        labelText: 'Tempat Pelaksanaan',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter the field';
+                        }
+                        _jenisVaksin = value!;
+                      },
+                      onChanged: (String value) {
+                        _updateStatus("");
+                      },
+                      keyboardType: TextInputType.text,
+                      decoration: const InputDecoration(
+                        labelText: 'Jenis Vaksin',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter the field';
+                        }
+                        _kuota = int.parse(value!);
+                      },
+                      onChanged: (String value) {
+                        _updateStatus("");
+                      },
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        labelText: 'Kuota',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      validator: (value) {
+                        if (value?.isEmpty ?? true) {
+                          return 'Please enter the field';
+                        }
+                        _kontak = value!;
+                      },
+                      onChanged: (String value) {
+                        _updateStatus("");
+                      },
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        labelText: 'Kontak',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ])),
               const SizedBox(
                 height: 15,
               ),
@@ -131,7 +229,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: MaterialButton(
-                  onPressed: () => _updateStatus("Data telah ditambahkan!"),
+                  onPressed: () {
+                    if (_formKey.currentState?.validate() ?? false) {
+                      SesiVaksinasi newSesi = SesiVaksinasi(
+                        waktu: _waktu,
+                        tempatPelaksanaan: _tempatPelaksanaan,
+                        jenisVaksin: _jenisVaksin,
+                        kuota: _kuota,
+                        kontak: _kontak,
+                      );
+
+                      addData(newSesi);
+                    }
+                  },
                   color: Colors.pink,
                   child: const Text(
                     'Submit',

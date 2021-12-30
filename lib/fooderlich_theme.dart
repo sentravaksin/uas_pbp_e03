@@ -1,4 +1,4 @@
-// Diambil dari https://github.com/raywenderlich/flta-materials
+// Taken and modified from https://github.com/raywenderlich/flta-materials
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -9,15 +9,34 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/SesiVaksinasi.dart';
+import '../model/SesiVaksinasiWithId.dart';
 
-Future<List<SesiVaksinasi>> fetchData() async {
+Future<String> deleteData(String id) async {
+  final http.Response response = await http.delete(
+    Uri.parse('http://sentra-vaksin.herokuapp.com/api/jadwal/$id/delete/'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  );
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return "Success";
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load');
+  }
+}
+
+Future<List<SesiVaksinasiWithId>> fetchData() async {
   final response = await http
       .get(Uri.parse('http://sentra-vaksin.herokuapp.com/api/jadwal/'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
     // then parse the JSON.
-    return sesiVaksinasiFromJson(response.body);
+    return sesiVaksinasiWithIdFromJson(response.body);
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
@@ -56,7 +75,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late Future<List<SesiVaksinasi>> futureSesi;
+  late Future<List<SesiVaksinasiWithId>> futureSesi;
 
   @override
   void initState() {
@@ -64,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
     futureSesi = fetchData();
   }
 
+  List<String> id = <String>['asda', 'asd'];
   List<String> waktu = <String>['22-12-2021', '23-12-2021'];
   List<String> tempatPelaksanaan = <String>['Jakarta', 'Lap. UI'];
   List<String> jenisVaksin = <String>['AZ', 'Pfizer'];
@@ -77,11 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: SafeArea(
-        child: FutureBuilder<List<SesiVaksinasi>>(
+        child: FutureBuilder<List<SesiVaksinasiWithId>>(
           future: futureSesi,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<SesiVaksinasi>? data = snapshot.data;
+              List<SesiVaksinasiWithId>? data = snapshot.data;
               return ListView.separated(
                 padding: const EdgeInsets.all(8),
                 itemCount: waktu.length,
@@ -156,6 +176,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                   onPressed: () {
                                     // Perform some action
+                                    deleteData('${id[index]}');
                                   },
                                   child: const Text('Delete',
                                       style: TextStyle(
