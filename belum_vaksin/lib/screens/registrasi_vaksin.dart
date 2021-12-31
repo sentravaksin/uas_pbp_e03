@@ -420,6 +420,8 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
       headers: {
         "content-type": "application/json",
         "accept": "application/json",
+        "Access-Control_Allow_Origin": "*",
+        "Content-Type": "application/json; charset=utf-8",
       },
       body: jsonEncode({
         "waktu": pesertaVaksin.waktu,
@@ -437,7 +439,8 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
       return "Laporan telah diterima";
     } else if (response.statusCode == 400) {
       print("statusCode: " + response.statusCode.toString() + "\n"); // DEBUG
-      print(response.body); // DEBUG
+      print(response.body + "\n"); // DEBUG
+      print(response.reasonPhrase); // DEBUG
       return "Ada masalah dalam memasukkan data, mohon periksa kembali";
     } else {
       print("statusCode: " + response.statusCode.toString() + "\n"); // DEBUG
