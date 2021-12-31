@@ -8,6 +8,8 @@ import 'package:daftar_nakes/daftar_nakes.dart';
 import 'package:jadwal/jadwal.dart';
 import 'package:belum_vaksin/belum_vaksin.dart';
 
+import '../widgets/text_widgets.dart';
+
 class DaftarPesertaVaksin extends StatefulWidget {
   const DaftarPesertaVaksin({Key? key}) : super(key: key);
 
@@ -70,17 +72,6 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
         break;
       default:
     }
-  }
-
-  // custom text widget
-  Widget CustomText (String text) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 12,
-        color: fontColor,
-      ),
-    );
   }
 
   // card widget
