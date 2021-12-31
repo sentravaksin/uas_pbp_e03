@@ -48,10 +48,10 @@ Future<List<SesiVaksinasiWithId>> fetchData() async {
 }
 
 void main() {
-  runApp(MyApp());
+  runApp(Jadwal());
 }
 
-class MyApp extends StatelessWidget {
+class Jadwal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -161,34 +161,34 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ButtonBar(
                                   alignment: MainAxisAlignment.start,
                                   children: [
-                                    TextButton(
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Colors.pink),
-                                        ),
-                                        onPressed: () {
-                                          // Perform some action
-                                          print('Debug sebelum navigator');
-                                          SesiVaksinasiWithId editedSesi =
-                                              data[index];
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const edit_jadwal.MyAppForm(),
-                                              // Pass the arguments as part of the RouteSettings. The
-                                              // DetailScreen reads the arguments from these settings.
-                                              settings: RouteSettings(
-                                                arguments: editedSesi,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        child: const Text('Edit',
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                            ))),
+                                    // TextButton(
+                                    //     style: ButtonStyle(
+                                    //       backgroundColor:
+                                    //           MaterialStateProperty.all<Color>(
+                                    //               Colors.pink),
+                                    //     ),
+                                    //     onPressed: () {
+                                    //       // Perform some action
+                                    //       print('Debug sebelum navigator');
+                                    //       SesiVaksinasiWithId editedSesi =
+                                    //           data[index];
+                                    //       Navigator.push(
+                                    //         context,
+                                    //         MaterialPageRoute(
+                                    //           builder: (context) =>
+                                    //               const edit_jadwal.MyAppForm(),
+                                    //           // Pass the arguments as part of the RouteSettings. The
+                                    //           // DetailScreen reads the arguments from these settings.
+                                    //           settings: RouteSettings(
+                                    //             arguments: editedSesi,
+                                    //           ),
+                                    //         ),
+                                    //       );
+                                    //     },
+                                    //     child: const Text('Edit',
+                                    //         style: TextStyle(
+                                    //           color: Colors.white,
+                                    //         ))),
                                     TextButton(
                                         style: ButtonStyle(
                                           backgroundColor:
@@ -218,23 +218,26 @@ class _MyHomePageState extends State<MyHomePage> {
                           const Divider(),
                     ),
                   ),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const add_jadwal.MyAppForm(),
-                          // Pass the arguments as part of the RouteSettings. The
-                          // DetailScreen reads the arguments from these settings.
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: MaterialButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const add_jadwal.MyAppForm(),
+                            // Pass the arguments as part of the RouteSettings. The
+                            // DetailScreen reads the arguments from these settings.
+                          ),
+                        );
+                      },
+                      color: Colors.pink,
+                      child: const Text(
+                        'Tambah Sesi Vaksinasi Baru',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
                         ),
-                      );
-                    },
-                    color: Colors.pink,
-                    child: const Text(
-                      'Tambah Sesi Vaksinasi Baru',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
                       ),
                     ),
                   ),
