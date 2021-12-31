@@ -43,7 +43,7 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
     // print('masuk');
     switch (item) {
       case 0:
-        Navigator.Navigator.push(
+        Navigator.push(
             context, MaterialPageRoute(builder: (context) => ConfirmPage()));
         break;
       case 1:
@@ -68,12 +68,12 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Daftar Nakes'),
-        leading: ElevatedButton(
-            style: ElevatedButton.styleFrom(elevation: 0),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.arrow_back_ios_new)),
+        // leading: ElevatedButton(
+        //     style: ElevatedButton.styleFrom(elevation: 0),
+        //     onPressed: () {
+        //       Navigator.pop(context);
+        //     },
+        //     child: Icon(Icons.arrow_back_ios_new)),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -117,30 +117,6 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
             setState(() {});
           });
         },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (item) => onSelected(context, item),
-        unselectedItemColor: Color.fromARGB(255, 105, 105, 105),
-        selectedItemColor: pinkAccent,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.assignment_ind_outlined),
-            label: 'Peserta Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment_outlined),
-            label: 'Lapor',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.badge_outlined),
-            label: 'Daftar Nakes',
-          ),
-        ],
       ),
     );
   }
