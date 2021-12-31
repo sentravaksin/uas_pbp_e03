@@ -7,8 +7,8 @@ class PesertaVaksin {
   String tempat_pelaksanaan;
   String jenis_vaksin;
   String nama_peserta;
-  int nik;
-  int no_telp;
+  String nik;
+  String no_telp;
 
   // generated attributes (masih ga ngerti nanti gmn)
   // var id;

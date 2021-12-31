@@ -23,8 +23,8 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
   String? tempat_pelaksanaan;
   String? jenis_vaksin;
   String? nama_peserta;
-  int? nik;
-  int? no_telp;
+  String? nik;
+  String? no_telp;
   var id;
   var sesi;
   var token;
@@ -102,7 +102,7 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         }
         return null;
       },
-      onChanged: (value) {
+      onSaved: (value) {
         nama_peserta = value;
         print("nama peserta: " + nama_peserta.toString()); // DEBUG
       },
@@ -152,8 +152,8 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         }
         return null;
       },
-      onChanged: (value) {
-        nik = int.parse(value);
+      onSaved: (value) {
+        nik = value;
         print("nik: " + nik.toString()); // DEBUG
       },
     );
@@ -201,8 +201,8 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         }
         return null;
       },
-      onChanged: (value) {
-        no_telp = int.parse(value);
+      onSaved: (value) {
+        no_telp = value;
         print("no telp: " + no_telp.toString()); // DEBUG
       },
     );
@@ -250,7 +250,7 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         }
         return null;
       },
-      onChanged: (value) {
+      onSaved: (value) {
         waktu = value;
         print("waktu: " + waktu.toString()); // DEBUG
       },
@@ -299,7 +299,7 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         }
         return null;
       },
-      onChanged: (value) {
+      onSaved: (value) {
         tempat_pelaksanaan = value;
         print("tempat pelaksanaan: " + tempat_pelaksanaan.toString()); // DEBUG
       },
@@ -348,7 +348,7 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         }
         return null;
       },
-      onChanged: (value) {
+      onSaved: (value) {
         jenis_vaksin = value;
         print("jenis vaksin: " + jenis_vaksin.toString()); // DEBUG
       },
@@ -433,10 +433,13 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
     );
 
     if (response.statusCode == 201) {
+      print("statusCode: " + response.statusCode.toString()); // DEBUG
       return "Laporan telah diterima";
     } else if (response.statusCode == 400) {
+      print("statusCode: " + response.statusCode.toString()); // DEBUG
       return "Ada masalah dalam memasukkan data, mohon periksa kembali";
     } else {
+      print("statusCode: " + response.statusCode.toString()); // DEBUG
       return "Ada masalah dalam pengiriman data, mohon coba beberapa saat lagi";
     }
   }
@@ -497,16 +500,14 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Title(
-                      color: Colors.blue,
-                      child: Text(
-                        "Registrasi Vaksin",
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w500,
-                          color: fontColor,
-                        ),
-                      )),
+                  Text(
+                    "Registrasi Vaksin",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w500,
+                      color: fontColor,
+                    ),
+                  ),
                   SizedBox(
                     height: 24,
                   ),

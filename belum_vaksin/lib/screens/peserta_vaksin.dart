@@ -30,8 +30,8 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
       String tempat_pelaksanaan = json['tempat_pelaksanaan'];
       String jenis_vaksin = json['jenis_vaksin'];
       String nama_peserta = json['nama_peserta'];
-      int nik = json['nik'];
-      int no_telp = json['no_telp'];
+      String nik = json['nik'];
+      String no_telp = json['no_telp'];
 
       PesertaVaksin pesertaVaksin = PesertaVaksin(
         waktu!, tempat_pelaksanaan, jenis_vaksin, nama_peserta, nik, no_telp,
@@ -45,7 +45,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
   }
 
   // color system
-  var offWhite = Color.fromARGB(255, 255, 236, 242);
+  var offWhite = Color.fromARGB(255, 255, 248, 250);
   var pinkAccent = Color.fromARGB(255, 255, 144, 181);
   var fontColor = Color.fromARGB(255, 156, 54, 88);
 
@@ -90,6 +90,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
 
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+      margin: EdgeInsets.symmetric(vertical: 4),
       decoration: BoxDecoration(
         color: offWhite,
         border: Border.all(color: pinkAccent),
@@ -103,10 +104,11 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
             "Detail Peserta",
             style: TextStyle(
               fontSize: 14,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w600,
               color: fontColor,
             ),
           ),
+          SizedBox(height: 4),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,6 +122,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
                   CustomText("No. Telepon"),
                 ],
               ),
+              SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -131,15 +134,16 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
               ),
             ],
           ),
-          SizedBox(height: 8),
+          SizedBox(height: 16),
           Text(
             "Detail Vaksinasi",
             style: TextStyle(
               fontSize: 14,
-              fontWeight: FontWeight.w400,
+              fontWeight: FontWeight.w600,
               color: fontColor,
             ),
           ),
+          SizedBox(height: 4),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,6 +157,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
                   CustomText("Jenis Vaksin"),
                 ],
               ),
+              SizedBox(width: 12),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -172,6 +177,8 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
   // widget build
   @override
   Widget build (BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       // app bar
       appBar: AppBar(
@@ -221,14 +228,29 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 40, vertical: 24),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FutureBuilder<List<PesertaVaksin>>(
+                Text(
+                  "Daftar Peserta Vaksin",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.w500,
+                    color: fontColor,
+                  ),
+                ),
+                SizedBox(
+                  height: 24,
+                ),
+                FutureBuilder<List<PesertaVaksin>> (
                   future: daftarPesertaVaksin(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       List<PesertaVaksin> daftarPeserta = snapshot.data!;
                       
                       return ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, int index) {
                           PesertaVaksin pesertaVaksin = daftarPeserta[index];
@@ -240,11 +262,10 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
                     return Center();
                   }
                 ),
-                Text("WOY"),
               ],
             ),
-          ),        
-        ),
+          ),
+        ),        
       ),
 
       // bottom navbar
