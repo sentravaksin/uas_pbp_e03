@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   http: 0.13.4
-  daftar_nakes:
-    path: ../daftar_nakes
+  belum_vaksin:
+    path: ../belum_vaksin
   jadwal:
     path: ../jadwal
   efek_samping:

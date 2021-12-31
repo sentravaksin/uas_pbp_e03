@@ -16,8 +16,8 @@ dependencies:
   google_fonts: ^2.1.0
   daftar_nakes:
     path: ../daftar_nakes
-  jadwal:
-    path: ../jadwal
+  efek_samping:
+    path: ../efek_samping
   belum_vaksin:
     path: ../belum_vaksin
 
