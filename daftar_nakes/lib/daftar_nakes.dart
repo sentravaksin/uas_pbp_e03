@@ -1,8 +1,21 @@
 library daftar_nakes;
 
+import 'package:belum_vaksin/screens/registrasi_vaksin.dart';
+import 'package:belum_vaksin/screens/peserta_vaksin.dart';
+import 'package:belum_vaksin/screens/confirm_registrasi.dart';
 import 'package:flutter/material.dart';
 import 'User_Model/User_Model.dart';
+// import 'package:jadwal/screens/confirm_registrasi.dart';
+import 'package:efek_samping/lapor.dart';
+import 'package:efek_samping/EfekSamping.dart'; // Import ini buat ke halaman registrasi vaksin
+import 'package:efek_samping/lapor.dart'; // Import ini buat ke halaman lapor efek samping
+import 'package:efek_samping/laporan.dart'; // Import ini buat ke halaman daftar laporan efek samping
 
+// daftar_nakes:
+//     path: ../daftar_nakes
+//   jadwal:
+//     path: ../jadwal
+//   efek_samping:
 /// A daftar nakes page.
 class Daftar_Nakes extends StatefulWidget {
   // User user;
@@ -23,64 +36,113 @@ List<User>? user;
 
 class _Daftar_NakesState extends State<Daftar_Nakes> {
   String name = '';
-
+  var offWhite = Color.fromARGB(255, 255, 248, 250);
+  var pinkAccent = Color.fromARGB(255, 255, 144, 181);
+  var fontColor = Color.fromARGB(255, 156, 54, 88);
+  void onSelected(BuildContext context, int item) {
+    // print('masuk');
+    switch (item) {
+      case 0:
+        Navigator.Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ConfirmPage()));
+        break;
+      case 1:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Lapor()));
+        break;
+      case 2:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Lapor()));
+        break;
+      case 3:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      default:
+    }
+  }
   // void getres() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Daftar Nakes'),
-          leading: ElevatedButton(
-              style: ElevatedButton.styleFrom(elevation: 0),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Icon(Icons.arrow_back_ios_new)),
-        ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Text(
-                //   count.toString(),
-                //   style: Theme.of(context).textTheme.headline4,
-                // ),
-                // ElevatedButton(◢◤◢◤◢◤
-                //     onPressed: () {
-                //       User.connectToAPI().then((value) {
-                //         user = value;
-                //         // print(user.toString());
-                //         setState(() {});
-                //       });
-                //     },
-                //     child: Text('get Nakes')),
-                // Padding(
-                //   padding: EdgeInsets.all(10),
-                //   child: ElevatedButton(
-                //       onPressed: () {
-                //         showDialog(
-                //             context: context,
-                //             builder: (context) => _makePopup());
-                //       },
-                //       child: Text("popup uhuy")),
-                // ),
-                displayUser()
-              ],
-            ),
+      appBar: AppBar(
+        title: Text('Daftar Nakes'),
+        leading: ElevatedButton(
+            style: ElevatedButton.styleFrom(elevation: 0),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.arrow_back_ios_new)),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Text(
+              //   count.toString(),
+              //   style: Theme.of(context).textTheme.headline4,
+              // ),
+              // ElevatedButton(◢◤◢◤◢◤
+              //     onPressed: () {
+              //       User.connectToAPI().then((value) {
+              //         user = value;
+              //         // print(user.toString());
+              //         setState(() {});
+              //       });
+              //     },
+              //     child: Text('get Nakes')),
+              // Padding(
+              //   padding: EdgeInsets.all(10),
+              //   child: ElevatedButton(
+              //       onPressed: () {
+              //         showDialog(
+              //             context: context,
+              //             builder: (context) => _makePopup());
+              //       },
+              //       child: Text("popup uhuy")),
+              // ),
+              displayUser()
+            ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            User.connectToAPI().then((value) {
-              user = value;
-              // print(user.toString());
-              setState(() {});
-            });
-          },
-        ));
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          User.connectToAPI().then((value) {
+            user = value;
+            // print(user.toString());
+            setState(() {});
+          });
+        },
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (item) => onSelected(context, item),
+        unselectedItemColor: Color.fromARGB(255, 105, 105, 105),
+        selectedItemColor: pinkAccent,
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.access_time_outlined),
+            label: 'Jadwal Vaksin',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.assignment_ind_outlined),
+            label: 'Peserta Vaksin',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.add_comment_outlined),
+            label: 'Lapor',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.badge_outlined),
+            label: 'Daftar Nakes',
+          ),
+        ],
+      ),
+    );
   }
 
   GestureDetector _makePopup() {
