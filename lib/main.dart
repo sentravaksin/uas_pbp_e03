@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       //theme: theme,
       // home : sesuaikan dengan halaman masing2 buat dicoba
       home: Laporan(),
