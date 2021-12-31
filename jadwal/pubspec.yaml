@@ -16,13 +16,7 @@ dependencies:
   google_fonts: ^2.1.0
   daftar_nakes:
     path: ../daftar_nakes
-<<<<<<< HEAD
-  efek_samping:
-    path: ../efek_samping
-=======
->>>>>>> ecb00b16c208768fe5ef51b37b4be1e41d176a85
-  belum_vaksin:
-    path: ../belum_vaksin
+  
 
 dev_dependencies:
   flutter_test:
