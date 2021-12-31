@@ -8,6 +8,7 @@ import 'package:daftar_nakes/daftar_nakes.dart';
 import 'package:efek_samping/EfekSamping.dart'; // Import ini buat ke halaman registrasi vaksin
 import 'package:efek_samping/lapor.dart'; // Import ini buat ke halaman lapor efek samping
 import 'package:efek_samping/laporan.dart'; // Import ini buat ke halaman daftar laporan efek samping
+import 'package:jadwal/screen/jadwal.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   var pinkAccent = Color.fromARGB(255, 255, 144, 181);
   var fontColor = Color.fromARGB(255, 156, 54, 88);
   int index = 0;
-  List<Widget> bodies = [ConfirmPage(), Lapor(), Daftar_Nakes()];
+  List<Widget> bodies = [Jadwal(), ConfirmPage(), Lapor(), Daftar_Nakes()];
   Widget build(BuildContext context) {
     // final screenHeight = MediaQuery.of(context).size.height;
     // final screenWidth = MediaQuery.of(context).size.width;
@@ -54,6 +55,10 @@ class _MyAppState extends State<MyApp> {
             const BottomNavigationBarItem(
               icon: Icon(Icons.access_time_outlined),
               label: 'Jadwal Vaksin',
+            ),
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.login),
+              label: 'Daftar Vaksin',
             ),
             const BottomNavigationBarItem(
               icon: Icon(Icons.add_comment_outlined),
