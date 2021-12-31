@@ -488,54 +488,55 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
       ),
 
       // body
-      // TODO: IMPLEMENT BODY
-      body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 40, vertical: 24),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Title(
-                    color: Colors.blue,
-                    child: Text(
-                      "Registrasi Vaksin",
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w500,
-                        color: fontColor,
-                      ),
-                    )),
-                SizedBox(
-                  height: 24,
-                ),
-                NamaField(context),
-                SizedBox(
-                  height: 12,
-                ),
-                NIKField(context),
-                SizedBox(
-                  height: 12,
-                ),
-                NoTelpField(context),
-                SizedBox(
-                  height: 12,
-                ),
-                TanggalField(context),
-                SizedBox(
-                  height: 12,
-                ),
-                LokasiField(context),
-                SizedBox(
-                  height: 12,
-                ),
-                JenisVaksinField(context),
-                SizedBox(
-                  height: 8,
-                ),
-                SubmitRegistrasi(context),
-              ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 40, vertical: 24),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Title(
+                      color: Colors.blue,
+                      child: Text(
+                        "Registrasi Vaksin",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w500,
+                          color: fontColor,
+                        ),
+                      )),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  NamaField(context),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  NIKField(context),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  NoTelpField(context),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  TanggalField(context),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  LokasiField(context),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  JenisVaksinField(context),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  SubmitRegistrasi(context),
+                ],
+              ),
             ),
           ),
         ),
