@@ -1,0 +1,1 @@
+// page confirm setelah berhasil registrasi
