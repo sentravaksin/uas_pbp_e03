@@ -1,3 +1,4 @@
+import 'package:belum_vaksin/screens/confirm_registrasi.dart';
 import 'package:belum_vaksin/screens/registrasi_vaksin.dart';
 import 'package:belum_vaksin/screens/peserta_vaksin.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       //theme: theme,
       // home : sesuaikan dengan halaman masing2 buat dicoba
-      home: RegistrasiVaksin(),
+      home: ConfirmPage(),
     );
   }
 }

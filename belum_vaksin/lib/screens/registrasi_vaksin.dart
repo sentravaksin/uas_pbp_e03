@@ -7,6 +7,8 @@ import 'dart:convert';
 import 'dart:async';
 import 'package:daftar_nakes/daftar_nakes.dart';
 
+import 'confirm_registrasi.dart';
+
 class RegistrasiVaksin extends StatefulWidget {
   const RegistrasiVaksin({Key? key}) : super(key: key);
 
@@ -407,6 +409,11 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
             _formKey.currentState!.reset();
           }
         }
+
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ConfirmPage()),
+        );
       },
     );
   }
