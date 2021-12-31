@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: BottomNavigationBar(
           onTap: (val) {
             setState(() {
-              print(val);
+              // print(val);
               index = val;
             });
           }, //(item) => onSelected(context, item),

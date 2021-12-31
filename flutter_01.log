@@ -1,0 +1,67 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter run jadwal/lib/screen/jadwal.dart
+
+## exception
+
+StateError: Bad state: No context with the running Dart application.
+
+```
+#0      RemoteDebuggerExecutionContext.id (package:dwds/src/debugging/execution_context.dart:55:7)
+<asynchronous suspension>
+#1      AppInspector._getExtensionRpcs (package:dwds/src/debugging/inspector.dart:527:20)
+<asynchronous suspension>
+#2      AppInspector._initialize (package:dwds/src/debugging/inspector.dart:93:34)
+<asynchronous suspension>
+#3      AppInspector.initialize (package:dwds/src/debugging/inspector.dart:156:5)
+<asynchronous suspension>
+#4      ChromeProxyService.createIsolate (package:dwds/src/services/chrome_proxy_service.dart:218:18)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 2.5.3, on Microsoft Windows [Version 10.0.19042.1415], locale id-ID)
+    • Flutter version 2.5.3 at C:\Users\hamon\Documents\flutter_windows_2.5.3-stable\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision 18116933e7 (3 months ago), 2021-10-15 10:46:35 -0700
+    • Engine revision d3ea636dc5
+    • Dart version 2.14.4
+
+[!] Android toolchain - develop for Android devices (Android SDK version 30.0.2)
+    • Android SDK at C:\Users\hamon\AppData\Local\Android\sdk
+    ✗ cmdline-tools component is missing
+      Run `path/to/sdkmanager --install "cmdline-tools;latest"`
+      See https://developer.android.com/studio/command-line for more details.
+    ✗ Android license status unknown.
+      Run `flutter doctor --android-licenses` to accept the SDK licenses.
+      See https://flutter.dev/docs/get-started/install/windows#android-setup for more details.
+
+[✓] Chrome - develop for the web
+    • Chrome at C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+
+[!] Android Studio (not installed)
+    • Android Studio not found; download from https://developer.android.com/studio/index.html
+      (or visit https://flutter.dev/docs/get-started/install/windows#android-setup for detailed instructions).
+
+[✓] IntelliJ IDEA Community Edition (version 2020.3)
+    • IntelliJ at C:\Program Files\intellij
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+
+[✓] VS Code (version 1.63.2)
+    • VS Code at C:\Users\hamon\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.18.1
+
+[✓] Connected device (2 available)
+    • Chrome (web) • chrome • web-javascript • Google Chrome 96.0.4664.110
+    • Edge (web)   • edge   • web-javascript • Microsoft Edge 96.0.1054.62
+
+! Doctor found issues in 2 categories.
+```
