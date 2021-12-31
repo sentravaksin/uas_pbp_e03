@@ -38,7 +38,6 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       //theme: theme,
       // home : sesuaikan dengan halaman masing2 buat dicoba
-<<<<<<< HEAD
       home: Scaffold(
         body: bodies[index],
         bottomNavigationBar: BottomNavigationBar(
