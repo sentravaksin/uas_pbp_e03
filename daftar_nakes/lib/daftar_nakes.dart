@@ -41,25 +41,6 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
   var fontColor = Color.fromARGB(255, 156, 54, 88);
   void onSelected(BuildContext context, int item) {
     // print('masuk');
-    switch (item) {
-      case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ConfirmPage()));
-        break;
-      case 1:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Lapor()));
-        break;
-      case 2:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Lapor()));
-        break;
-      case 3:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
-      default:
-    }
   }
   // void getres() {}
 
@@ -68,6 +49,7 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Daftar Nakes'),
+        backgroundColor: pinkAccent,
         // leading: ElevatedButton(
         //     style: ElevatedButton.styleFrom(elevation: 0),
         //     onPressed: () {
@@ -79,36 +61,13 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Text(
-              //   count.toString(),
-              //   style: Theme.of(context).textTheme.headline4,
-              // ),
-              // ElevatedButton(◢◤◢◤◢◤
-              //     onPressed: () {
-              //       User.connectToAPI().then((value) {
-              //         user = value;
-              //         // print(user.toString());
-              //         setState(() {});
-              //       });
-              //     },
-              //     child: Text('get Nakes')),
-              // Padding(
-              //   padding: EdgeInsets.all(10),
-              //   child: ElevatedButton(
-              //       onPressed: () {
-              //         showDialog(
-              //             context: context,
-              //             builder: (context) => _makePopup());
-              //       },
-              //       child: Text("popup uhuy")),
-              // ),
-              displayUser()
-            ],
+            children: [displayUser()],
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: pinkAccent,
+        foregroundColor: offWhite,
         child: Icon(Icons.add),
         onPressed: () {
           User.connectToAPI().then((value) {
@@ -121,76 +80,19 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
     );
   }
 
-  GestureDetector _makePopup() {
-    return GestureDetector(
-      // onVerticalDragDown: (context) {
-      //   print('dragged down');
-      // },
-      child: AlertDialog(
-        content: Container(
-          alignment: Alignment.center,
-          child: Column(
-            children: [
-              Text('asdasd'),
-              GestureDetector(
-                child: Text('click me'),
-                onTap: () {
-                  print('asdasd');
-                },
-              )
-            ],
-          ),
-        ),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5))),
-      ),
-    );
-  }
-
-  // Widget createCell(String isi) {
-  //   return Padding(
-  //     padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-  //     child: Card(
-  //       shape: RoundedRectangleBorder(
-  //           borderRadius: BorderRadius.circular(30.0),
-  //           side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
-  //       child: Padding(
-  //         padding: const EdgeInsets.only(left: 40, top: 20, bottom: 20),
-  //         child: Container(
-  //           child: Column(children: [
-  //             Text("Nama    : ${efekSamping.nama}",
-  //                 textAlign: TextAlign.left,
-  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
-  //             Text("NIK     : ${efekSamping.nik.toString()}",
-  //                 textAlign: TextAlign.left,
-  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
-  //             Text("No HP   : ${efekSamping.no_hp.toString()}",
-  //                 textAlign: TextAlign.left,
-  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
-  //             Text("Alamat  : ${efekSamping.alamat}",
-  //                 textAlign: TextAlign.left,
-  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
-  //             Text("Vaksin  : ${efekSamping.vaksin}",
-  //                 textAlign: TextAlign.left,
-  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
-  //             Text("Gejala  : ${efekSamping.gejala}",
-  //                 textAlign: TextAlign.left,
-  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
-  //             Text("Token   : ${efekSamping.token}",
-  //                 textAlign: TextAlign.left,
-  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'))
-  //           ], crossAxisAlignment: CrossAxisAlignment.start),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Column displayUser() {
     Column cols = Column(
-      children: [],
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text("Click the + to get the data!",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 20, fontFamily: 'ABeeZee', color: fontColor))
+      ],
     );
     if (user != null) {
+      cols.children.removeLast();
       for (int i = 0; i < user!.length; i++) {
         User item = user!.elementAt(i);
         // print(item);
@@ -201,23 +103,36 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
-                  side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                  side: new BorderSide(color: pinkAccent, width: 1.0)),
               child: Padding(
-                padding: const EdgeInsets.only(left: 40, top: 20, bottom: 20),
+                padding: const EdgeInsets.only(
+                    left: 40, top: 20, bottom: 20, right: 20),
                 child: Container(
                   child: Column(children: [
                     Text("Nama         : ${item.name}",
                         textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'ABeeZee',
+                            color: fontColor)),
                     Text("Umur         : ${item.umur}",
                         textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'ABeeZee',
+                            color: fontColor)),
                     Text("Pendidikan   : ${item.pendidikan}",
                         textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'ABeeZee',
+                            color: fontColor)),
                     Text("Rumah Sakit  : ${item.rs}",
                         textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'ABeeZee',
+                            color: fontColor)),
                   ], crossAxisAlignment: CrossAxisAlignment.start),
                 ),
               ),

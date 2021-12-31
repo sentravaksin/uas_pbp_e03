@@ -1,4 +1,5 @@
 import 'package:daftar_nakes/daftar_nakes.dart';
+import 'package:efek_samping/laporan.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'EfekSamping.dart';
@@ -384,11 +385,7 @@ class LaporState extends State<Lapor> {
     switch (item) {
       case 0:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
-      case 1:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+            context, MaterialPageRoute(builder: (context) => Laporan()));
         break;
       default:
     }
@@ -400,8 +397,8 @@ class LaporState extends State<Lapor> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
-        title: Text("Laporan Efek Samping Vaksin",
-            style: TextStyle(fontFamily: 'ABeeZee', fontSize: 24)),
+        title: Text("Laporkan Efek Samping Vaksin",
+            style: TextStyle(fontFamily: 'ABeeZee', fontSize: 22)),
         actions: [
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
@@ -409,13 +406,7 @@ class LaporState extends State<Lapor> {
               PopupMenuItem<int>(
                   value: 0,
                   child: Text(
-                    "Jadwal Vaksin",
-                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
-                  )),
-              PopupMenuItem<int>(
-                  value: 1,
-                  child: Text(
-                    "Registrasi Vaksin",
+                    "Laporan Keluhan",
                     style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
                   )),
             ],

@@ -25,8 +25,8 @@ class _MyAppState extends State<MyApp> {
   var offWhite = Color.fromARGB(255, 255, 248, 250);
   var pinkAccent = Color.fromARGB(255, 255, 144, 181);
   var fontColor = Color.fromARGB(255, 156, 54, 88);
-  int index = 0; //jadwal vaksin //peserta //Lapor    //daftar Nakes
-  List<Widget> bodies = [ConfirmPage(), Laporan(), Laporan(), Daftar_Nakes()];
+  int index = 0;
+  List<Widget> bodies = [ConfirmPage(), Lapor(), Daftar_Nakes()];
   Widget build(BuildContext context) {
     // final screenHeight = MediaQuery.of(context).size.height;
     // final screenWidth = MediaQuery.of(context).size.width;
@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
         bottomNavigationBar: BottomNavigationBar(
           onTap: (val) {
             setState(() {
-              print(val);
+              // print(val);
               index = val;
             });
           }, //(item) => onSelected(context, item),
@@ -54,10 +54,6 @@ class _MyAppState extends State<MyApp> {
             const BottomNavigationBarItem(
               icon: Icon(Icons.access_time_outlined),
               label: 'Jadwal Vaksin',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.assignment_ind_outlined),
-              label: 'Peserta Vaksin',
             ),
             const BottomNavigationBarItem(
               icon: Icon(Icons.add_comment_outlined),
