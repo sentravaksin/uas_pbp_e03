@@ -40,32 +40,6 @@ class _LaporanState extends State<Laporan> {
     return reversedReports;
   }
 
-  void onSelected(BuildContext context, int item) {
-    switch (item) {
-      case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
-      case 1:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
-      case 2:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
-      case 3:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
-      case 4:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
-      default:
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,37 +50,6 @@ class _LaporanState extends State<Laporan> {
           "Laporan Efek Samping",
           style: TextStyle(fontFamily: 'ABeeZee', fontSize: 27),
         ),
-        actions: [
-          PopupMenuButton<int>(
-            onSelected: (item) => onSelected(context, item),
-            itemBuilder: (context) => [
-              PopupMenuItem<int>(
-                  value: 0,
-                  child: Text(
-                    "Jadwal Vaksin",
-                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
-                  )),
-              PopupMenuItem<int>(
-                  value: 1,
-                  child: Text(
-                    "Registrasi Vaksin",
-                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
-                  )),
-              PopupMenuItem<int>(
-                  value: 3,
-                  child: Text(
-                    "Lapor Keluhan",
-                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
-                  )),
-              PopupMenuItem<int>(
-                  value: 4,
-                  child: Text(
-                    "Daftar Nakes",
-                    style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
-                  )),
-            ],
-          )
-        ],
       ),
       body: SafeArea(
           child: FutureBuilder<List<EfekSamping>>(
