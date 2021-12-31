@@ -1,12 +1,8 @@
-import 'package:daftar_nakes/daftar_nakes.dart';
 import 'package:efek_samping/laporan.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'EfekSamping.dart';
 import 'dart:convert';
-import 'package:daftar_nakes/daftar_nakes.dart';
-import 'package:jadwal/jadwal.dart';
-import 'package:belum_vaksin/belum_vaksin.dart';
 
 class Lapor extends StatefulWidget {
   @override
@@ -331,14 +327,8 @@ class LaporState extends State<Lapor> {
     if (response.statusCode == 201) {
       return "Laporan telah diterima";
     } else if (response.statusCode == 400) {
-      // ludi izin ngedebug heheh
-      print("statusCode: " + response.statusCode.toString() + "\n"); // DEBUG
-      print(response.body); // DEBUG
       return "Token salah, laporan gagal dibuat";
     } else {
-      // ludi izin ngedebug heheh
-      print("statusCode: " + response.statusCode.toString() + "\n"); // DEBUG
-      print(response.body); // DEBUG
       return "Ada masalah dalam pengiriman data, mohon coba beberapa saat lagi";
     }
   }

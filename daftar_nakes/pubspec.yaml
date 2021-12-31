@@ -11,8 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
   http: 0.13.4
+<<<<<<< HEAD
   belum_vaksin:
     path: ../belum_vaksin
+=======
+  
+>>>>>>> ecb00b16c208768fe5ef51b37b4be1e41d176a85
   jadwal:
     path: ../jadwal
   efek_samping:

@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'EfekSamping.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:daftar_nakes/daftar_nakes.dart';
-import 'package:jadwal/jadwal.dart';
-import 'package:belum_vaksin/belum_vaksin.dart';
 
 class Laporan extends StatefulWidget {
   const Laporan({Key? key}) : super(key: key);
