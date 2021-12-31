@@ -38,7 +38,6 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       //theme: theme,
       // home : sesuaikan dengan halaman masing2 buat dicoba
-<<<<<<< HEAD
       home: Scaffold(
         body: bodies[index],
         bottomNavigationBar: BottomNavigationBar(
@@ -71,81 +70,6 @@ class _MyAppState extends State<MyApp> {
           ],
         ),
       ),
-=======
-<<<<<<< HEAD
-      home: SafeArea(
-        child: Scaffold(
-            appBar: AppBar(
-              title: const Text("Sentra Vaksin"),
-              actions: [
-                // Menu-menu khusus admin
-                PopupMenuButton<int>(
-                  onSelected: (item) => onSelected(context, item),
-                  itemBuilder: (context) => [
-                    PopupMenuItem<int>(
-                        value: 0,
-                        child: Text(
-                          "Jadwal Vaksin",
-                          style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
-                        )),
-                    PopupMenuItem<int>(
-                        value: 1,
-                        child: Text(
-                          "Registrasi Vaksin",
-                          style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'),
-                        )),
-                  ],
-                )
-              ],
-            ),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                // Menu-menu buat user, argumen 1 judul argumen 2 fungsi widgetnya
-                buildMenuModul("Jadwal Vaksinasi", Lapor()),
-                buildMenuModul("Jadwal vaksinasi", Lapor()),
-                buildMenuModul("Jadwal vaksinasi", Lapor()),
-              ],
-            )),
-      ),
-    );
-  }
-}
-
-class buildMenuModul extends StatelessWidget {
-  buildMenuModul(this.title, this.modul);
-  final String? title;
-  final Widget? modul;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(0),
-      child: Container(
-        height: 150,
-        width: 300,
-        child: Card(
-          color: Colors.lightBlue,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
-          child: InkWell(
-            child: Center(
-              child: Text(
-                title!,
-                style: TextStyle(
-                    fontSize: 27, fontFamily: 'ABeeZee', color: Colors.white),
-              ),
-            ),
-            onTap: () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => modul!)),
-          ),
-        ),
-      ),
-=======
-      home: ConfirmPage(),
->>>>>>> a16924205945d0b1ce1616cf7b6ee6e5092ca166
->>>>>>> a98485ea4dbfe6e8d1c882b06ec28b0bd5a02423
     );
   }
 }

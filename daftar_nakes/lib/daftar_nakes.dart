@@ -41,25 +41,6 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
   var fontColor = Color.fromARGB(255, 156, 54, 88);
   void onSelected(BuildContext context, int item) {
     // print('masuk');
-    switch (item) {
-      case 0:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ConfirmPage()));
-        break;
-      case 1:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Lapor()));
-        break;
-      case 2:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Lapor()));
-        break;
-      case 3:
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
-        break;
-      default:
-    }
   }
   // void getres() {}
 
@@ -68,6 +49,7 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Daftar Nakes'),
+        backgroundColor: pinkAccent,
         // leading: ElevatedButton(
         //     style: ElevatedButton.styleFrom(elevation: 0),
         //     onPressed: () {
