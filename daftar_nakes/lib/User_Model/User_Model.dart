@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 //http://127.0.0.1:8000/daftar_nakes/api
 //https://reqres.in/api/users?page=2
 //https://reqres.in/api/users/2
-String url = 'http://10.0.2.2:8000/daftar_nakes/api';
+//https://sentra-vaksin.herokuapp.com/api/daftar_nakes/
+String url = 'https://sentra-vaksin.herokuapp.com/api/daftar_nakes/';
 
 class User {
   static var users = [];
@@ -32,12 +33,20 @@ class User {
     print(userUrl);
     List<User> list = [];
     try {
-      Map userData;
+      List<dynamic> userData;
       final res = await request.get(userUrl);
       var objJson = jsonDecode(res.body);
       request.close();
-      userData = (objJson as Map<String, dynamic>);
-      for (var item in userData.values) {
+      // print(objJson);
+      // userData = (objJson[0] as Map<String, dynamic>);
+      // for (var item in objJson) {
+      //   list.add(User.createUser(item));
+      // }
+
+      userData = (objJson as List<dynamic>);
+      for (int i = 0; i < userData.length; i++) {
+        var item = (userData[i] as Map<String, dynamic>);
+        // print(item);
         list.add(User.createUser(item));
       }
       return list;

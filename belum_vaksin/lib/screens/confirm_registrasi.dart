@@ -1,6 +1,7 @@
 // page confirm setelah berhasil registrasi
 import 'package:belum_vaksin/screens/peserta_vaksin.dart';
 import 'package:efek_samping/lapor.dart';
+import 'package:daftar_nakes/daftar_nakes.dart';
 import 'package:flutter/material.dart';
 import 'package:belum_vaksin/belum_vaksin.dart';
 import 'package:belum_vaksin/screens/registrasi_vaksin.dart';
@@ -8,7 +9,10 @@ import 'package:belum_vaksin/screens/registrasi_vaksin.dart';
 import '../widgets/text_widgets.dart';
 
 class ConfirmPage extends StatelessWidget {
-  const ConfirmPage({Key? key, /*PesertaVaksin? pesertaVaksin*/}) : super(key: key);
+  const ConfirmPage({
+    Key? key,
+    /*PesertaVaksin? pesertaVaksin*/
+  }) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -23,6 +27,7 @@ class ConfirmPage extends StatelessWidget {
 
     // for navigation TODO: UPDATE INI
     void onSelected(BuildContext context, int item) {
+      print('masuk');
       switch (item) {
         case 0:
           Navigator.push(
@@ -38,14 +43,15 @@ class ConfirmPage extends StatelessWidget {
           break;
         case 3:
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Lapor()));
+              context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
           break;
         default:
       }
     }
 
     // hardcode
-    PesertaVaksin pesertaDummy = PesertaVaksin("31-12-21", "jakarta", "booster", "demo", "1234567890", "081209876543");
+    PesertaVaksin pesertaDummy = PesertaVaksin(
+        "31-12-21", "jakarta", "booster", "demo", "1234567890", "081209876543");
 
     return Scaffold(
       // app bar
@@ -58,33 +64,29 @@ class ConfirmPage extends StatelessWidget {
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
               PopupMenuItem<int>(
-                value: 0,
-                child: Text(
-                  "Jadwal Vaksin",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 0,
+                  child: Text(
+                    "Jadwal Vaksin",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 1,
-                child: Text(
-                  "Peserta Vaksin",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 1,
+                  child: Text(
+                    "Peserta Vaksin",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 2,
-                child: Text(
-                  "Lapor Efek Samping",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 2,
+                  child: Text(
+                    "Lapor Efek Samping",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 3,
-                child: Text(
-                  "Daftar Nakes",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 3,
+                  child: Text(
+                    "Daftar Nakes",
+                    style: TextStyle(fontSize: 20),
+                  )),
             ],
           )
         ],
@@ -98,7 +100,7 @@ class ConfirmPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget> [
+              children: <Widget>[
                 Text(
                   "Registrasi Vaksin Berhasil!",
                   style: TextStyle(
@@ -118,21 +120,22 @@ class ConfirmPage extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget> [
+                    children: <Widget>[
                       Text(
-                        "Pendaftaran vaksinasi atas nama " + pesertaDummy.nama_peserta + " berhasil dibuat.",
+                        "Pendaftaran vaksinasi atas nama " +
+                            pesertaDummy.nama_peserta +
+                            " berhasil dibuat.",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: fontColor
-                        ),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: fontColor),
                       ),
                       SizedBox(height: 28),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget> [
+                        children: <Widget>[
                           Text(
                             "Detail Peserta",
                             style: TextStyle(
@@ -145,11 +148,11 @@ class ConfirmPage extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget> [
+                            children: <Widget>[
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget> [
+                                children: <Widget>[
                                   CustomText("Nama"),
                                   CustomText("NIK"),
                                   CustomText("No. Telepon"),
@@ -159,10 +162,12 @@ class ConfirmPage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget> [
+                                children: <Widget>[
                                   CustomText(": " + pesertaDummy.nama_peserta),
-                                  CustomText(": " + pesertaDummy.nik.toString()),
-                                  CustomText(": " + pesertaDummy.no_telp.toString()),
+                                  CustomText(
+                                      ": " + pesertaDummy.nik.toString()),
+                                  CustomText(
+                                      ": " + pesertaDummy.no_telp.toString()),
                                 ],
                               ),
                             ],
@@ -180,11 +185,11 @@ class ConfirmPage extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget> [
+                            children: <Widget>[
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget> [
+                                children: <Widget>[
                                   CustomText("Tanggal"),
                                   CustomText("Lokasi"),
                                   CustomText("Jenis Vaksin"),
@@ -194,9 +199,10 @@ class ConfirmPage extends StatelessWidget {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget> [
+                                children: <Widget>[
                                   CustomText(": " + pesertaDummy.waktu),
-                                  CustomText(": " + pesertaDummy.tempat_pelaksanaan),
+                                  CustomText(
+                                      ": " + pesertaDummy.tempat_pelaksanaan),
                                   CustomText(": " + pesertaDummy.jenis_vaksin),
                                 ],
                               ),
@@ -208,7 +214,8 @@ class ConfirmPage extends StatelessWidget {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: fontColor,
-                          padding: EdgeInsets.symmetric(horizontal: 36, vertical: 16),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 36, vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -223,7 +230,8 @@ class ConfirmPage extends StatelessWidget {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => DaftarPesertaVaksin()),
+                            MaterialPageRoute(
+                                builder: (context) => DaftarPesertaVaksin()),
                           );
                         },
                       ),
@@ -231,7 +239,8 @@ class ConfirmPage extends StatelessWidget {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: pinkAccent,
-                          padding: EdgeInsets.symmetric(horizontal: 36, vertical: 16),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 36, vertical: 16),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -247,7 +256,8 @@ class ConfirmPage extends StatelessWidget {
                           // Navigator.pop(context);
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => RegistrasiVaksin()),
+                            MaterialPageRoute(
+                                builder: (context) => RegistrasiVaksin()),
                           );
                         },
                       ),
@@ -262,29 +272,6 @@ class ConfirmPage extends StatelessWidget {
 
       // bottom navbar
       // TODO: UPDATE INI
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Color.fromARGB(255, 105, 105, 105),
-        selectedItemColor: pinkAccent,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.assignment_ind_outlined),
-            label: 'Peserta Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment_outlined),
-            label: 'Lapor',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.badge_outlined),
-            label: 'Daftar Nakes',
-          ),
-        ],
-      ),
     );
   }
 }

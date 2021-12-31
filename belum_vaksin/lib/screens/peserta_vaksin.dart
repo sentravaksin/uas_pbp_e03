@@ -75,7 +75,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
   }
 
   // card widget
-  Widget CardPesertaVaksin (BuildContext context, PesertaVaksin pesertaVaksin) {
+  Widget CardPesertaVaksin(BuildContext context, PesertaVaksin pesertaVaksin) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
@@ -90,7 +90,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget> [
+        children: <Widget>[
           Text(
             "Detail Peserta",
             style: TextStyle(
@@ -103,11 +103,11 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget> [
+            children: <Widget>[
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget> [
+                children: <Widget>[
                   CustomText("Nama"),
                   CustomText("NIK"),
                   CustomText("No. Telepon"),
@@ -117,7 +117,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget> [
+                children: <Widget>[
                   CustomText(": " + pesertaVaksin.nama_peserta),
                   CustomText(": " + pesertaVaksin.nik.toString()),
                   CustomText(": " + pesertaVaksin.no_telp.toString()),
@@ -138,11 +138,11 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget> [
+            children: <Widget>[
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget> [
+                children: <Widget>[
                   CustomText("Tanggal"),
                   CustomText("Lokasi"),
                   CustomText("Jenis Vaksin"),
@@ -152,7 +152,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget> [
+                children: <Widget>[
                   CustomText(": " + pesertaVaksin.waktu),
                   CustomText(": " + pesertaVaksin.tempat_pelaksanaan),
                   CustomText(": " + pesertaVaksin.jenis_vaksin),
@@ -167,7 +167,7 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
 
   // widget build
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -181,33 +181,29 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
               PopupMenuItem<int>(
-                value: 0,
-                child: Text(
-                  "Jadwal Vaksin",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 0,
+                  child: Text(
+                    "Jadwal Vaksin",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 1,
-                child: Text(
-                  "Registrasi Vaksin",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 1,
+                  child: Text(
+                    "Registrasi Vaksin",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 2,
-                child: Text(
-                  "Lapor Efek Samping",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 2,
+                  child: Text(
+                    "Lapor Efek Samping",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 3,
-                child: Text(
-                  "Daftar Nakes",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 3,
+                  child: Text(
+                    "Daftar Nakes",
+                    style: TextStyle(fontSize: 20),
+                  )),
             ],
           )
         ],
@@ -232,31 +228,30 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
                 SizedBox(
                   height: 24,
                 ),
-                FutureBuilder<List<PesertaVaksin>> (
-                  future: daftarPesertaVaksin(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      List<PesertaVaksin> daftarPeserta = snapshot.data!;
-                      
-                      return ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, int index) {
-                          PesertaVaksin pesertaVaksin = daftarPeserta[index];
-                          return CardPesertaVaksin(context, pesertaVaksin);
-                          // return Text(index.toString() + ". " + pesertaVaksin.nama_peserta); // DEBUG
-                        }
-                      );
-                    }
-                    return Center();
-                  }
-                ),
+                FutureBuilder<List<PesertaVaksin>>(
+                    future: daftarPesertaVaksin(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List<PesertaVaksin> daftarPeserta = snapshot.data!;
+
+                        return ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (context, int index) {
+                              PesertaVaksin pesertaVaksin =
+                                  daftarPeserta[index];
+                              return CardPesertaVaksin(context, pesertaVaksin);
+                              // return Text(index.toString() + ". " + pesertaVaksin.nama_peserta); // DEBUG
+                            });
+                      }
+                      return Center();
+                    }),
               ],
             ),
           ),
-        ),        
+        ),
       ),
 
       // bottom navbar

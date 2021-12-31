@@ -78,11 +78,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: pinkAccent,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: pinkAccent,
+            )),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
@@ -91,11 +90,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: Colors.red,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: Colors.red,
+            )),
       ),
       maxLength: 100,
       validator: (value) {
@@ -127,11 +125,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: pinkAccent,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: pinkAccent,
+            )),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
@@ -140,11 +137,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: Colors.red,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: Colors.red,
+            )),
       ),
       maxLength: 16,
       keyboardType: TextInputType.number,
@@ -177,11 +173,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: pinkAccent,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: pinkAccent,
+            )),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
@@ -190,11 +185,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: Colors.red,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: Colors.red,
+            )),
       ),
       maxLength: 15,
       validator: (value) {
@@ -226,11 +220,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: pinkAccent,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: pinkAccent,
+            )),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
@@ -239,11 +232,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: Colors.red,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: Colors.red,
+            )),
       ),
       maxLength: 100,
       validator: (value) {
@@ -275,11 +267,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: pinkAccent,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: pinkAccent,
+            )),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
@@ -288,11 +279,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: Colors.red,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: Colors.red,
+            )),
       ),
       maxLength: 100,
       validator: (value) {
@@ -324,11 +314,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: pinkAccent,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: pinkAccent,
+            )),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide(
@@ -337,11 +326,10 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(
-            color: Colors.red,
-          )
-        ),
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              color: Colors.red,
+            )),
       ),
       maxLength: 100,
       validator: (value) {
@@ -384,7 +372,8 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
           _formKey.currentState!.save();
 
           PesertaVaksin pesertaVaksin = PesertaVaksin(
-            waktu!, tempat_pelaksanaan!, jenis_vaksin!, nama_peserta!, nik!, no_telp!,
+            waktu!, tempat_pelaksanaan!, jenis_vaksin!, nama_peserta!, nik!,
+            no_telp!,
             // id, sesi, token belom ngerti harus gimana
           );
           final String finalSubmit = await registerPeserta(pesertaVaksin);
@@ -395,14 +384,12 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
 
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(_submit,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'ABeeZee',
-                  color: fontColor,
-                )
-              )
-            ),
+                content: Text(_submit,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'ABeeZee',
+                      color: fontColor,
+                    ))),
           );
 
           if (_submit == "Laporan telah diterima") {
@@ -420,26 +407,25 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
 
   // for creating the registration
   Future<String> registerPeserta(PesertaVaksin pesertaVaksin) async {
-    final String apiUrl = 'http://sentra-vaksin.herokuapp.com/api/belum_vaksin/create/';
+    final String apiUrl =
+        'http://sentra-vaksin.herokuapp.com/api/belum_vaksin/create/';
 
-    final response = await http.post(
-      Uri.parse(apiUrl),
-      headers: {
-        "content-type": "application/json",
-        "accept": "application/json",
-        "Access-Control_Allow_Origin": "*",
-        "Content-Type": "application/json; charset=utf-8",
-      },
-      body: jsonEncode({
-        "waktu": pesertaVaksin.waktu,
-        "tempat_pelaksanaan": pesertaVaksin.tempat_pelaksanaan,
-        "jenis_vaksin": pesertaVaksin.jenis_vaksin,
-        "nama_peserta": pesertaVaksin.nama_peserta,
-        "nik": pesertaVaksin.nik,
-        "no_telp": pesertaVaksin.no_telp,
-        // id, sesi, token belom ngerti harus gimana
-      })
-    );
+    final response = await http.post(Uri.parse(apiUrl),
+        headers: {
+          "content-type": "application/json",
+          "accept": "application/json",
+          "Access-Control_Allow_Origin": "*",
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: jsonEncode({
+          "waktu": pesertaVaksin.waktu,
+          "tempat_pelaksanaan": pesertaVaksin.tempat_pelaksanaan,
+          "jenis_vaksin": pesertaVaksin.jenis_vaksin,
+          "nama_peserta": pesertaVaksin.nama_peserta,
+          "nik": pesertaVaksin.nik,
+          "no_telp": pesertaVaksin.no_telp,
+          // id, sesi, token belom ngerti harus gimana
+        }));
 
     if (response.statusCode == 201) {
       print("statusCode: " + response.statusCode.toString()); // DEBUG
@@ -470,33 +456,29 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
               PopupMenuItem<int>(
-                value: 0,
-                child: Text(
-                  "Jadwal Vaksin",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 0,
+                  child: Text(
+                    "Jadwal Vaksin",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 1,
-                child: Text(
-                  "Peserta Vaksin",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 1,
+                  child: Text(
+                    "Peserta Vaksin",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 2,
-                child: Text(
-                  "Lapor Efek Samping",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 2,
+                  child: Text(
+                    "Lapor Efek Samping",
+                    style: TextStyle(fontSize: 20),
+                  )),
               PopupMenuItem<int>(
-                value: 3,
-                child: Text(
-                  "Daftar Nakes",
-                  style: TextStyle(fontSize: 20),
-                )
-              ),
+                  value: 3,
+                  child: Text(
+                    "Daftar Nakes",
+                    style: TextStyle(fontSize: 20),
+                  )),
             ],
           )
         ],
@@ -582,5 +564,4 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
       ),
     );
   }
-
 }

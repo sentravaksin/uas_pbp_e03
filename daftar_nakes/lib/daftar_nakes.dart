@@ -1,8 +1,21 @@
 library daftar_nakes;
 
+import 'package:belum_vaksin/screens/registrasi_vaksin.dart';
+import 'package:belum_vaksin/screens/peserta_vaksin.dart';
+import 'package:belum_vaksin/screens/confirm_registrasi.dart';
 import 'package:flutter/material.dart';
 import 'User_Model/User_Model.dart';
+// import 'package:jadwal/screens/confirm_registrasi.dart';
+import 'package:efek_samping/lapor.dart';
+import 'package:efek_samping/EfekSamping.dart'; // Import ini buat ke halaman registrasi vaksin
+import 'package:efek_samping/lapor.dart'; // Import ini buat ke halaman lapor efek samping
+import 'package:efek_samping/laporan.dart'; // Import ini buat ke halaman daftar laporan efek samping
 
+// daftar_nakes:
+//     path: ../daftar_nakes
+//   jadwal:
+//     path: ../jadwal
+//   efek_samping:
 /// A daftar nakes page.
 class Daftar_Nakes extends StatefulWidget {
   // User user;
@@ -23,64 +36,88 @@ List<User>? user;
 
 class _Daftar_NakesState extends State<Daftar_Nakes> {
   String name = '';
-
+  var offWhite = Color.fromARGB(255, 255, 248, 250);
+  var pinkAccent = Color.fromARGB(255, 255, 144, 181);
+  var fontColor = Color.fromARGB(255, 156, 54, 88);
+  void onSelected(BuildContext context, int item) {
+    // print('masuk');
+    switch (item) {
+      case 0:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ConfirmPage()));
+        break;
+      case 1:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Lapor()));
+        break;
+      case 2:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Lapor()));
+        break;
+      case 3:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
+        break;
+      default:
+    }
+  }
   // void getres() {}
 
   @override
   Widget build(BuildContext context) {
-    // User.connectToAPI().then((value) {
-    //   user = (user == null) ? value : user;
-    //   print(user.toString());
-    // });
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('Daftar Nakes'),
-            leading: ElevatedButton(
-                style: ElevatedButton.styleFrom(elevation: 0),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back_ios_new)),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Daftar Nakes'),
+        // leading: ElevatedButton(
+        //     style: ElevatedButton.styleFrom(elevation: 0),
+        //     onPressed: () {
+        //       Navigator.pop(context);
+        //     },
+        //     child: Icon(Icons.arrow_back_ios_new)),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Text(
+              //   count.toString(),
+              //   style: Theme.of(context).textTheme.headline4,
+              // ),
+              // ElevatedButton(◢◤◢◤◢◤
+              //     onPressed: () {
+              //       User.connectToAPI().then((value) {
+              //         user = value;
+              //         // print(user.toString());
+              //         setState(() {});
+              //       });
+              //     },
+              //     child: Text('get Nakes')),
+              // Padding(
+              //   padding: EdgeInsets.all(10),
+              //   child: ElevatedButton(
+              //       onPressed: () {
+              //         showDialog(
+              //             context: context,
+              //             builder: (context) => _makePopup());
+              //       },
+              //       child: Text("popup uhuy")),
+              // ),
+              displayUser()
+            ],
           ),
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  count.toString(),
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-                displayUser(),
-                ElevatedButton(
-                    onPressed: () {
-                      User.connectToAPI().then((value) {
-                        user = value;
-                        // print(user.toString());
-                        setState(() {});
-                      });
-                    },
-                    child: Text('get Nakes')),
-                Padding(
-                  padding: EdgeInsets.all(10),
-                  child: ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) => _makePopup());
-                      },
-                      child: Text("popup uhuy")),
-                )
-              ],
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {
-              count++;
-              setState(() {});
-            },
-          )),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          User.connectToAPI().then((value) {
+            user = value;
+            // print(user.toString());
+            setState(() {});
+          });
+        },
+      ),
     );
   }
 
@@ -110,21 +147,44 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
     );
   }
 
-  GestureDetector createCell(String isi) {
-    return GestureDetector(
-      onTap: () {
-        print(isi);
-      },
-      child: Container(
-        padding: EdgeInsets.all(5),
-        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
-        // height: 10.0,
-        // width: 10.0,
-        color: Colors.pink,
-        child: Text(isi),
-      ),
-    );
-  }
+  // Widget createCell(String isi) {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+  //     child: Card(
+  //       shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(30.0),
+  //           side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+  //       child: Padding(
+  //         padding: const EdgeInsets.only(left: 40, top: 20, bottom: 20),
+  //         child: Container(
+  //           child: Column(children: [
+  //             Text("Nama    : ${efekSamping.nama}",
+  //                 textAlign: TextAlign.left,
+  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+  //             Text("NIK     : ${efekSamping.nik.toString()}",
+  //                 textAlign: TextAlign.left,
+  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+  //             Text("No HP   : ${efekSamping.no_hp.toString()}",
+  //                 textAlign: TextAlign.left,
+  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+  //             Text("Alamat  : ${efekSamping.alamat}",
+  //                 textAlign: TextAlign.left,
+  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+  //             Text("Vaksin  : ${efekSamping.vaksin}",
+  //                 textAlign: TextAlign.left,
+  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+  //             Text("Gejala  : ${efekSamping.gejala}",
+  //                 textAlign: TextAlign.left,
+  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+  //             Text("Token   : ${efekSamping.token}",
+  //                 textAlign: TextAlign.left,
+  //                 style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'))
+  //           ], crossAxisAlignment: CrossAxisAlignment.start),
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Column displayUser() {
     Column cols = Column(
@@ -133,13 +193,36 @@ class _Daftar_NakesState extends State<Daftar_Nakes> {
     if (user != null) {
       for (int i = 0; i < user!.length; i++) {
         User item = user!.elementAt(i);
-        print(item);
+        // print(item);
         cols.children
             .add(Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          createCell(item.name),
-          createCell(item.umur),
-          createCell(item.pendidikan),
-          createCell(item.rs),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 40, top: 20, bottom: 20),
+                child: Container(
+                  child: Column(children: [
+                    Text("Nama         : ${item.name}",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+                    Text("Umur         : ${item.umur}",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+                    Text("Pendidikan   : ${item.pendidikan}",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+                    Text("Rumah Sakit  : ${item.rs}",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+                  ], crossAxisAlignment: CrossAxisAlignment.start),
+                ),
+              ),
+            ),
+          )
         ]));
       }
     }
