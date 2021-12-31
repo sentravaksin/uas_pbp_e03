@@ -4,14 +4,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../model/SesiVaksinasi.dart';
+import '../model/SesiVaksinasiWithId.dart';
 
-void main() {
-  runApp(MyAppForm());
-}
+// void main() {
+//   runApp(MyAppForm());
+// }
+late final current;
 
-Future<dynamic> addData(SesiVaksinasi sesiVaksinasi) async {
-  final response = await http.post(
-    Uri.parse('https://sentra-vaksin.herokuapp.com/api/jadwal/create/'),
+Future<dynamic> editData(String id, SesiVaksinasi sesiVaksinasi) async {
+  final response = await http.put(
+    Uri.parse('https://sentra-vaksin.herokuapp.com/api/jadwal/$id/update/'),
     headers: {
       "Access-Control_Allow_Origin": "*",
       "Content-Type": "application/json; charset=utf-8",
@@ -19,7 +21,7 @@ Future<dynamic> addData(SesiVaksinasi sesiVaksinasi) async {
     body: jsonEncode(sesiVaksinasi),
   );
   print(response.statusCode);
-  if (response.statusCode == 201) {
+  if (response.statusCode == 200) {
     return "Success";
   }
   throw Exception('Failed to save');
@@ -30,21 +32,25 @@ class MyAppForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    current = ModalRoute.of(context)!.settings.arguments as SesiVaksinasiWithId;
+
     return MaterialApp(
       title: 'Sentra Vaksin - Mobile Dev Phase',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.pink,
       ),
-      home: const MyHomePage(title: 'Info Sesi Vaksinasi Terbaru'),
+      home: MyHomePage(title: 'Info Sesi Vaksinasi Terbaru', editItem: current),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title, required this.editItem})
+      : super(key: key);
 
   final String title;
+  final SesiVaksinasiWithId editItem;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -52,11 +58,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String _status = "";
-  late String _waktu;
-  late String _tempatPelaksanaan;
-  late String _jenisVaksin;
-  late int _kuota;
-  late String _kontak;
+  String _waktu = current.waktu;
+  String _tempatPelaksanaan = current.tempatPelaksanaan;
+  String _jenisVaksin = current.jenisVaksin;
+  int _kuota = current.kuota;
+  String _kontak = current.kontak;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -86,7 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     _dateController.text = selectedDate.toString();
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -102,6 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   key: _formKey,
                   child: Column(children: [
                     TextFormField(
+                      initialValue: current.waktu,
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
                           return 'Please enter the field';
@@ -145,6 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     //   height: 15,
                     // ),
                     TextFormField(
+                      initialValue: current.tempatPelaksanaan,
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
                           return 'Please enter the field';
@@ -164,6 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 15,
                     ),
                     TextFormField(
+                      initialValue: current.jenisVaksin,
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
                           return 'Please enter the field';
@@ -183,6 +191,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 15,
                     ),
                     TextFormField(
+                      initialValue: current.kuota.toString(),
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
                           return 'Please enter the field';
@@ -202,6 +211,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       height: 15,
                     ),
                     TextFormField(
+                      initialValue: current.kontak,
                       validator: (value) {
                         if (value?.isEmpty ?? true) {
                           return 'Please enter the field';
@@ -239,7 +249,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         kontak: _kontak,
                       );
 
-                      addData(newSesi);
+                      editData(current.id, newSesi);
                       // if success
                       Navigator.pop(context);
                     }
