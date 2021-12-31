@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'EfekSamping.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:daftar_nakes/daftar_nakes.dart';
+import 'package:jadwal/jadwal.dart';
+import 'package:belum_vaksin/belum_vaksin.dart';
 
 class Laporan extends StatefulWidget {
   const Laporan({Key? key}) : super(key: key);
@@ -40,8 +43,13 @@ class _LaporanState extends State<Laporan> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("Laporan Efek Samping"),
+        backgroundColor: Colors.lightBlue,
+        title: Text(
+          "Laporan Efek Samping",
+          style: TextStyle(fontFamily: 'ABeeZee', fontSize: 27),
+        ),
       ),
       body: SafeArea(
           child: FutureBuilder<List<EfekSamping>>(
@@ -59,39 +67,45 @@ class _LaporanState extends State<Laporan> {
           return Center();
         },
       )),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_rounded),
-            label: 'Daftar Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment_outlined),
-            label: 'Lapor',
-          ),
-        ],
-      ),
     );
   }
 }
 
 Widget buildEfekSampingCard(EfekSamping efekSamping) {
-  return Card(
-    child: Column(
-      children: [
-        Text("Nama :${efekSamping.nama}"),
-        Text("NIK ${efekSamping.nik.toString()}"),
-        Text("No HP ${efekSamping.no_hp.toString()}"),
-        Text("Alamat ${efekSamping.alamat}"),
-        Text("Vaksin ${efekSamping.vaksin}"),
-        Text("Gejala ${efekSamping.gejala}"),
-        Text("Token ${efekSamping.token}")
-      ],
+  return Padding(
+    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+    child: Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 40, top: 20, bottom: 20),
+        child: Container(
+          child: Column(children: [
+            Text("Nama    : ${efekSamping.nama}",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+            Text("NIK     : ${efekSamping.nik.toString()}",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+            Text("No HP   : ${efekSamping.no_hp.toString()}",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+            Text("Alamat  : ${efekSamping.alamat}",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+            Text("Vaksin  : ${efekSamping.vaksin}",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+            Text("Gejala  : ${efekSamping.gejala}",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee')),
+            Text("Token   : ${efekSamping.token}",
+                textAlign: TextAlign.left,
+                style: TextStyle(fontSize: 20, fontFamily: 'ABeeZee'))
+          ], crossAxisAlignment: CrossAxisAlignment.start),
+        ),
+      ),
     ),
   );
 }
