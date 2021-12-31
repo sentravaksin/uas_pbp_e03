@@ -413,7 +413,7 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
 
   // for creating the registration
   Future<String> registerPeserta(PesertaVaksin pesertaVaksin) async {
-    final String apiUrl = 'http://sentra-vaksin.herokuapp.com/api/belum_vaksin/create';
+    final String apiUrl = 'http://sentra-vaksin.herokuapp.com/api/belum_vaksin/create/';
 
     final response = await http.post(
       Uri.parse(apiUrl),
@@ -436,10 +436,12 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
       print("statusCode: " + response.statusCode.toString()); // DEBUG
       return "Laporan telah diterima";
     } else if (response.statusCode == 400) {
-      print("statusCode: " + response.statusCode.toString()); // DEBUG
+      print("statusCode: " + response.statusCode.toString() + "\n"); // DEBUG
+      print(response.body); // DEBUG
       return "Ada masalah dalam memasukkan data, mohon periksa kembali";
     } else {
-      print("statusCode: " + response.statusCode.toString()); // DEBUG
+      print("statusCode: " + response.statusCode.toString() + "\n"); // DEBUG
+      print(response.body); // DEBUG
       return "Ada masalah dalam pengiriman data, mohon coba beberapa saat lagi";
     }
   }

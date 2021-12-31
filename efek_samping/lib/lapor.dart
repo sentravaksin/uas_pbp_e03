@@ -330,8 +330,14 @@ class LaporState extends State<Lapor> {
     if (response.statusCode == 201) {
       return "Laporan telah diterima";
     } else if (response.statusCode == 400) {
+      // ludi izin ngedebug heheh
+      print("statusCode: " + response.statusCode.toString() + "\n"); // DEBUG
+      print(response.body); // DEBUG
       return "Token salah, laporan gagal dibuat";
     } else {
+      // ludi izin ngedebug heheh
+      print("statusCode: " + response.statusCode.toString() + "\n"); // DEBUG
+      print(response.body); // DEBUG
       return "Ada masalah dalam pengiriman data, mohon coba beberapa saat lagi";
     }
   }

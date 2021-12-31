@@ -25,8 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       //theme: theme,
       // home : sesuaikan dengan halaman masing2 buat dicoba
-      home: RegistrasiVaksin(),
-      // home: Laporan(),
+      home: Lapor(),
     );
   }
 }
