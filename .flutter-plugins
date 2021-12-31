@@ -1,7 +1,16 @@
 # This is a generated file; do not edit or check into version control.
+<<<<<<< HEAD
 path_provider=C:\\Users\\shadiq\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider-2.0.8\\
 path_provider_android=C:\\Users\\shadiq\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider_android-2.0.11\\
 path_provider_ios=C:\\Users\\shadiq\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider_ios-2.0.7\\
 path_provider_linux=C:\\Users\\shadiq\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider_linux-2.1.4\\
 path_provider_macos=C:\\Users\\shadiq\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider_macos-2.0.4\\
 path_provider_windows=C:\\Users\\shadiq\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dartlang.org\\path_provider_windows-2.0.4\\
+=======
+path_provider=C:\\Users\\Retad\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider-2.0.8\\
+path_provider_android=C:\\Users\\Retad\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_android-2.0.9\\
+path_provider_ios=C:\\Users\\Retad\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_ios-2.0.7\\
+path_provider_linux=C:\\Users\\Retad\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_linux-2.1.4\\
+path_provider_macos=C:\\Users\\Retad\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_macos-2.0.4\\
+path_provider_windows=C:\\Users\\Retad\\Documents\\flutter\\.pub-cache\\hosted\\pub.dartlang.org\\path_provider_windows-2.0.4\\
+>>>>>>> a98485ea4dbfe6e8d1c882b06ec28b0bd5a02423
