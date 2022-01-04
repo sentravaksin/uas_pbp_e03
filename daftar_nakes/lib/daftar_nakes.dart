@@ -1,15 +1,11 @@
 library daftar_nakes;
 
-import 'package:belum_vaksin/screens/registrasi_vaksin.dart';
-import 'package:belum_vaksin/screens/peserta_vaksin.dart';
-import 'package:belum_vaksin/screens/confirm_registrasi.dart';
+//import 'package:belum_vaksin/screens/registrasi_vaksin.dart';
+//import 'package:belum_vaksin/screens/peserta_vaksin.dart';
+//import 'package:belum_vaksin/screens/confirm_registrasi.dart';
 import 'package:flutter/material.dart';
 import 'User_Model/User_Model.dart';
 // import 'package:jadwal/screens/confirm_registrasi.dart';
-import 'package:efek_samping/lapor.dart';
-import 'package:efek_samping/EfekSamping.dart'; // Import ini buat ke halaman registrasi vaksin
-import 'package:efek_samping/lapor.dart'; // Import ini buat ke halaman lapor efek samping
-import 'package:efek_samping/laporan.dart'; // Import ini buat ke halaman daftar laporan efek samping
 
 // daftar_nakes:
 //     path: ../daftar_nakes

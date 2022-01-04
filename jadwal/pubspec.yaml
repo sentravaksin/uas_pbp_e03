@@ -14,10 +14,8 @@ dependencies:
   http: ^0.13.4
   dio: ^4.0.4
   google_fonts: ^2.1.0
-  daftar_nakes:
-    path: ../daftar_nakes
-  belum_vaksin:
-    path: ../belum_vaksin
+  
+  
 
 dev_dependencies:
   flutter_test:

@@ -12,10 +12,7 @@ dependencies:
     sdk: flutter
   http: 0.13.4
   
-  jadwal:
-    path: ../jadwal
-  efek_samping:
-    path: ../efek_samping
+  
     
 dev_dependencies:
   flutter_test:
