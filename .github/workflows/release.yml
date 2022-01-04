@@ -35,9 +35,6 @@ jobs:
       
       - name: Get packages
         run: flutter packages get
-
-      - name: Analyze
-        run: flutter analyze
               
       - name: Build APK
         run: flutter build apk --split-per-abi
