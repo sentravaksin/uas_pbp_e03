@@ -1,4 +1,5 @@
 // page form registrasi vaksin
+import 'package:belum_vaksin/screens/peserta_vaksin.dart';
 import 'package:efek_samping/lapor.dart';
 import 'package:flutter/material.dart';
 import 'package:belum_vaksin/belum_vaksin.dart';
@@ -6,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 import 'package:daftar_nakes/daftar_nakes.dart';
+import 'package:jadwal/screen/jadwal.dart';
 
 import 'confirm_registrasi.dart';
 
@@ -43,11 +45,11 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
     switch (item) {
       case 0:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Lapor()));
+            context, MaterialPageRoute(builder: (context) => Jadwal()));
         break;
       case 1:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Lapor()));
+            context, MaterialPageRoute(builder: (context) => DaftarPesertaVaksin()));
         break;
       case 2:
         Navigator.push(
@@ -55,7 +57,7 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
         break;
       case 3:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Lapor()));
+            context, MaterialPageRoute(builder: (context) => Daftar_Nakes()));
         break;
       default:
     }
@@ -539,29 +541,29 @@ class _RegistrasiState extends State<RegistrasiVaksin> {
 
       // bottom navbar
       // TODO: UPDATE INI
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Color.fromARGB(255, 105, 105, 105),
-        selectedItemColor: pinkAccent,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.assignment_ind_outlined),
-            label: 'Peserta Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment_outlined),
-            label: 'Lapor',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.badge_outlined),
-            label: 'Daftar Nakes',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   unselectedItemColor: Color.fromARGB(255, 105, 105, 105),
+      //   selectedItemColor: pinkAccent,
+      //   type: BottomNavigationBarType.fixed,
+      //   items: <BottomNavigationBarItem>[
+      //     const BottomNavigationBarItem(
+      //       icon: Icon(Icons.access_time_outlined),
+      //       label: 'Jadwal Vaksin',
+      //     ),
+      //     const BottomNavigationBarItem(
+      //       icon: Icon(Icons.assignment_ind_outlined),
+      //       label: 'Peserta Vaksin',
+      //     ),
+      //     const BottomNavigationBarItem(
+      //       icon: Icon(Icons.add_comment_outlined),
+      //       label: 'Lapor',
+      //     ),
+      //     const BottomNavigationBarItem(
+      //       icon: Icon(Icons.badge_outlined),
+      //       label: 'Daftar Nakes',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

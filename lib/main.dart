@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   var pinkAccent = Color.fromARGB(255, 255, 144, 181);
   var fontColor = Color.fromARGB(255, 156, 54, 88);
   int index = 0;
-  List<Widget> bodies = [Jadwal(), ConfirmPage(), Lapor(), Daftar_Nakes()];
+  List<Widget> bodies = [Jadwal(), RegistrasiVaksin(), Lapor(), Daftar_Nakes()];
   Widget build(BuildContext context) {
     // final screenHeight = MediaQuery.of(context).size.height;
     // final screenWidth = MediaQuery.of(context).size.width;

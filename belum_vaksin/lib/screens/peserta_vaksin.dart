@@ -256,29 +256,29 @@ class _PesertaVaksinState extends State<DaftarPesertaVaksin> {
 
       // bottom navbar
       // TODO: UPDATE INI
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Color.fromARGB(255, 105, 105, 105),
-        selectedItemColor: pinkAccent,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_outlined),
-            label: 'Jadwal Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.assignment_ind_outlined),
-            label: 'Registrasi Vaksin',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment_outlined),
-            label: 'Lapor',
-          ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.badge_outlined),
-            label: 'Daftar Nakes',
-          ),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   unselectedItemColor: Color.fromARGB(255, 105, 105, 105),
+      //   selectedItemColor: pinkAccent,
+      //   type: BottomNavigationBarType.fixed,
+      //   items: <BottomNavigationBarItem>[
+      //     const BottomNavigationBarItem(
+      //       icon: Icon(Icons.access_time_outlined),
+      //       label: 'Jadwal Vaksin',
+      //     ),
+      //     const BottomNavigationBarItem(
+      //       icon: Icon(Icons.assignment_ind_outlined),
+      //       label: 'Registrasi Vaksin',
+      //     ),
+      //     const BottomNavigationBarItem(
+      //       icon: Icon(Icons.add_comment_outlined),
+      //       label: 'Lapor',
+      //     ),
+      //     const BottomNavigationBarItem(
+      //       icon: Icon(Icons.badge_outlined),
+      //       label: 'Daftar Nakes',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }
